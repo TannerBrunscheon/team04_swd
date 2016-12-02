@@ -29,7 +29,7 @@ import java.util.UUID;
     public class Server {
         private static final String APPLICATION_NAME = "ServerForSWD";
 
-        private static final String TABLE_ID = "1jigM5G7EHZlGhAWETMo76ZU2V54oWEniS0T28RoM&";
+        private static final String TABLE_ID = "1yjG0nIuuzsE83rqoWLkFrAvWwoQVMgLmWvhdg5ML";
 
         private static DataStoreFactory dataStoreFactory;
 
@@ -62,20 +62,13 @@ import java.util.UUID;
                 Credential credential = access();
 
                 fusiontables = new Fusiontables.Builder(httpTransport,JSON_FACTORY,credential).setApplicationName(APPLICATION_NAME).build();
-                Table table = new Table();
-                table.setName(UUID.randomUUID().toString());
-                table.setIsExportable(false);
-                table.setDescription("Sample Table");
+                Fusiontables.Query.Sql sql = fusiontables.query().sql("{UPDATE " + TABLE_ID + "} {SET "
+                        + "Democrat = Democrat + 1} {WHERE ROWID= {SELECT ROWID} {FROM <" +TABLE_ID+">} {WHERE STATE-COUNTY = AL-Autauga}}");
+                System.out.println("UPDATE " + TABLE_ID + " SET "
+                        + "Democrat = Democrat + 1 WHERE ROWID = (SELECT ROWID FROM <" +TABLE_ID+"> WHERE STATE-COUNTY = (AL-Autauga))");
+                sql.execute();
 
-                // Set columns for new table
-                table.setColumns(Arrays.asList(new Column().setName("Text").setType("STRING"),
-                        new Column().setName("Number").setType("NUMBER"),
-                        new Column().setName("Location").setType("LOCATION"),
-                        new Column().setName("Date").setType("DATETIME")));
 
-                // Adds a new column to the table.
-                Fusiontables.Table.Insert t = fusiontables.table().insert(table);
-                Table r = t.execute();
             }
             catch (Exception e){
 
