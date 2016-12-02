@@ -34,7 +34,7 @@ import java.util.UUID;
         private static DataStoreFactory dataStoreFactory;
 
         private static final java.io.File CREDSTORE =
-                new java.io.File("team04_swd/Credentials/");
+                new java.io.File("Credentials/");
 
         private static HttpTransport httpTransport;
 
