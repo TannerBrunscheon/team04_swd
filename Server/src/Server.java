@@ -57,6 +57,9 @@ import java.util.Collections;
                 fusiontables = new Fusiontables.Builder(httpTransport,JSON_FACTORY,credential).setApplicationName(APPLICATION_NAME).build();
                 Fusiontables.Query.Sql sql = fusiontables.query().sql("SELECT Text,Number,Location,Date FROM " + TABLE_ID);
 
+
+
+
             }
             catch (Exception e){
 
