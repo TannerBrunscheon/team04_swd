@@ -13,14 +13,14 @@ import com.google.api.client.util.store.DataStoreFactory;
 import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.fusiontables.Fusiontables;
 import com.google.api.services.fusiontables.FusiontablesScopes;
-import com.google.api.services.fusiontables.model.Column;
+import com.google.api.services.fusiontables.model.Sqlresponse;
 import com.google.api.services.fusiontables.model.Table;
+import com.google.api.services.fusiontables.model.TableList;
+import javafx.scene.control.Tab;
 
-import java.io.InputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.UUID;
 
 
 /**
@@ -62,17 +62,32 @@ import java.util.UUID;
                 Credential credential = access();
 
                 fusiontables = new Fusiontables.Builder(httpTransport,JSON_FACTORY,credential).setApplicationName(APPLICATION_NAME).build();
-                Fusiontables.Query.Sql sql = fusiontables.query().sql("{UPDATE " + TABLE_ID + "} {SET "
-                        + "Democrat = Democrat + 1} {WHERE ROWID= {SELECT ROWID} {FROM <" +TABLE_ID+">} {WHERE STATE-COUNTY = AL-Autauga}}");
-                System.out.println("UPDATE " + TABLE_ID + " SET "
-                        + "Democrat = Democrat + 1 WHERE ROWID = (SELECT ROWID FROM <" +TABLE_ID+"> WHERE STATE-COUNTY = (AL-Autauga))");
-                sql.execute();
+                try {
+                    Fusiontables.Query.Sql sql = fusiontables.query().sql("SELECT ROWID FROM " + TABLE_ID + " WHERE  GEO_ID = '1003'");
+                    Sqlresponse sqlresponse= sql.execute();
+
+                    Fusiontables.Query.Sql sql1 = fusiontables.query().sql("UPDATE " + TABLE_ID + " SET  Democrat = 1 WHERE ROWID = ''");
+                    System.out.println("UPDATE " + TABLE_ID + " SET  Democrat = 1 WHERE ROWID = '"+sqlresponse.toString()+"'");
+                    sql1.execute();
+                }
+                catch (IOException f){
+                    throw f;
+                }
+                Fusiontables.Table.List listTables = fusiontables.table().list();
+                TableList tablelist = listTables.execute();
+                if (tablelist.getItems() == null || tablelist.getItems().isEmpty()) {
+                    System.out.println("No tables found!");
+                    return;
+                }
+                for (Table table : tablelist.getItems()){
+                    System.out.println(table.getTableId());
+                }
 
 
             }
             catch (Exception e){
-
             }
+
         }
     }
 
