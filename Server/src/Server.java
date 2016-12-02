@@ -35,6 +35,7 @@ import java.util.Collections;
 
         private static Fusiontables fusiontables;
 
+
         private static Credential access()throws Exception{
             GoogleClientSecrets secrets = GoogleClientSecrets.load(
                     JSON_FACTORY, new InputStreamReader(
