@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="false">
+    <output url="file://$MODULE_DIR$/../out/production/Server" />
+    <output-test url="file://$MODULE_DIR$/../out/test/Server" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/libraries" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../commons-codec-1.3.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../commons-logging-1.1.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../google-api-client-1.14.1-beta.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../google-api-client-1.22.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../google-api-client-java6-1.22.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../google-api-services-civicinfo-us_v1-rev12-1.14.1-beta.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../google-api-services-fusiontables-v1-rev19-1.14.1-beta.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../google-http-client-1.14.1-beta.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../google-http-client-1.22.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../google-http-client-jackson2-1.22.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../google-oauth-client-1.14.1-beta.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../google-oauth-client-1.22.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../google-oauth-client-java6-1.22.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../google-oauth-client-jetty-1.22.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../guava-jdk5-17.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../httpclient-4.0.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../httpcore-4.0.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../jackson-core-2.1.3.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../jetty-6.1.26.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../jetty-util-6.1.26.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../jsr305-1.3.9.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../servlet-api-2.5-20081211.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../xpp3-1.1.4c.jar!/" />
+        </CLASSES>
+        <JAVADOC>
+          <root url="jar://$MODULE_DIR$/../../google-api-client-java6-1.22.0-javadoc.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../google-api-services-civicinfo-us_v1-rev12-1.14.1-beta-javadoc.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../google-api-services-fusiontables-v1-rev19-1.14.1-beta-javadoc.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../google-oauth-client-jetty-1.22.0-javadoc.jar!/" />
+        </JAVADOC>
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/../../google-api-client-java6-1.22.0-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../google-api-services-civicinfo-us_v1-rev12-1.14.1-beta-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../google-api-services-fusiontables-v1-rev19-1.14.1-beta-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../google-oauth-client-jetty-1.22.0-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../jsr305-1.3.9.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+  </component>
+</module>
