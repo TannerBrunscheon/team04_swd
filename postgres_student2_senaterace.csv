@@ -1,3 +1,4 @@
+Chickasaw,IA-Chickasaw,0,0
 Bibb,AL-Bibb,0,0
 Blount,AL-Blount,0,0
 Bullock,AL-Bullock,0,0
@@ -485,7 +486,6 @@ Liberty,GA-Liberty,0,0
 Lincoln,GA-Lincoln,0,0
 Long,GA-Long,0,0
 Lowndes,GA-Lowndes,0,0
-Adair,IA-Adair,0,0
 McDuffie,GA-McDuffie,0,0
 McIntosh,GA-McIntosh,0,0
 Macon,GA-Macon,0,0
@@ -600,6 +600,7 @@ Shoshone,ID-Shoshone,0,0
 Teton,ID-Teton,0,0
 Twin Falls,ID-Twin Falls,0,0
 Valley,ID-Valley,0,0
+Adair,IA-Adair,0,0
 Washington,ID-Washington,0,0
 Adams,IL-Adams,0,0
 Alexander,IL-Alexander,0,0
@@ -631,7 +632,7 @@ Franklin,IL-Franklin,0,0
 Fulton,IL-Fulton,0,0
 Gallatin,IL-Gallatin,0,0
 Greene,IL-Greene,0,0
-Adams,IA-Adams,0,0
+Allamakee,IA-Allamakee,0,0
 Grundy,IL-Grundy,0,0
 Hamilton,IL-Hamilton,0,0
 Hancock,IL-Hancock,0,0
@@ -742,7 +743,7 @@ Henry,IN-Henry,0,0
 Howard,IN-Howard,0,0
 Huntington,IN-Huntington,0,0
 Jackson,IN-Jackson,0,0
-Chickasaw,IA-Chickasaw,0,0
+Appanoose,IA-Appanoose,0,0
 Jasper,IN-Jasper,0,0
 Jay,IN-Jay,0,0
 Jefferson,IN-Jefferson,0,0
@@ -797,8 +798,6 @@ Washington,IN-Washington,0,0
 Wayne,IN-Wayne,0,0
 Wells,IN-Wells,0,0
 White,IN-White,0,0
-Allamakee,IA-Allamakee,0,0
-Appanoose,IA-Appanoose,0,0
 Audubon,IA-Audubon,0,0
 Benton,IA-Benton,0,0
 Black Hawk,IA-Black Hawk,0,0
@@ -808,45 +807,7 @@ Buena Vista,IA-Buena Vista,0,0
 Butler,IA-Butler,0,0
 Calhoun,IA-Calhoun,0,0
 Dickinson,IA-Dickinson,0,0
-Carroll,IA-Carroll,0,0
-Cass,IA-Cass,0,0
-Cedar,IA-Cedar,0,0
-Cerro Gordo,IA-Cerro Gordo,0,0
-Cherokee,IA-Cherokee,0,0
-Clarke,IA-Clarke,0,0
-Clay,IA-Clay,0,0
-Clayton,IA-Clayton,0,0
-Clinton,IA-Clinton,0,0
-Crawford,IA-Crawford,0,0
-Dallas,IA-Dallas,0,0
-Davis,IA-Davis,0,0
-Decatur,IA-Decatur,0,0
-Delaware,IA-Delaware,0,0
-Des Moines,IA-Des Moines,0,0
-Hancock,IA-Hancock,0,0
-Dubuque,IA-Dubuque,0,0
-Emmet,IA-Emmet,0,0
-Fayette,IA-Fayette,0,0
-Floyd,IA-Floyd,0,0
-Franklin,IA-Franklin,0,0
-Hardin,IA-Hardin,0,0
-Fremont,IA-Fremont,0,0
-Greene,IA-Greene,0,0
-Grundy,IA-Grundy,0,0
-Guthrie,IA-Guthrie,0,0
-Hamilton,IA-Hamilton,0,0
-Harrison,IA-Harrison,0,0
-Henry,IA-Henry,0,0
-Howard,IA-Howard,0,0
-Humboldt,IA-Humboldt,0,0
-Ida,IA-Ida,0,0
-Iowa,IA-Iowa,0,0
-Jackson,IA-Jackson,0,0
-Jasper,IA-Jasper,0,0
-Jefferson,IA-Jefferson,0,0
-Johnson,IA-Johnson,0,0
-Jones,IA-Jones,0,0
-Keokuk,IA-Keokuk,0,0
+Bremer,IA-Bremer,0,0
 Kossuth,IA-Kossuth,0,0
 Lee,IA-Lee,0,0
 Osceola,IA-Osceola,0,0
@@ -877,7 +838,6 @@ Ringgold,IA-Ringgold,0,0
 Sac,IA-Sac,0,0
 Scott,IA-Scott,0,0
 Shelby,IA-Shelby,0,0
-Allen,KS-Allen,0,0
 Sioux,IA-Sioux,0,0
 Story,IA-Story,0,0
 Tama,IA-Tama,0,0
@@ -893,6 +853,7 @@ Winnebago,IA-Winnebago,0,0
 Winneshiek,IA-Winneshiek,0,0
 Woodbury,IA-Woodbury,0,0
 Worth,IA-Worth,0,0
+Allen,KS-Allen,0,0
 Atchison,KS-Atchison,0,0
 Barber,KS-Barber,0,0
 Barton,KS-Barton,0,0
@@ -3248,5 +3209,44 @@ St. Thomas,VI-St. Thomas,0,0
 Autauga,AL-Autauga,0,0
 Coosa,AL-Coosa,0,0
 Barbour,AL-Barbour,0,0
-Bremer,IA-Bremer,0,0
 Baldwin,AL-Baldwin,0,0
+Adams,IA-Adams,0,0
+Carroll,IA-Carroll,0,0
+Cass,IA-Cass,0,0
+Cedar,IA-Cedar,0,0
+Cerro Gordo,IA-Cerro Gordo,0,0
+Cherokee,IA-Cherokee,0,0
+Clarke,IA-Clarke,0,0
+Clay,IA-Clay,0,0
+Clayton,IA-Clayton,0,0
+Clinton,IA-Clinton,0,0
+Crawford,IA-Crawford,0,0
+Dallas,IA-Dallas,0,0
+Davis,IA-Davis,0,0
+Decatur,IA-Decatur,0,0
+Delaware,IA-Delaware,0,0
+Des Moines,IA-Des Moines,0,0
+Hancock,IA-Hancock,0,0
+Dubuque,IA-Dubuque,0,0
+Emmet,IA-Emmet,0,0
+Fayette,IA-Fayette,0,0
+Floyd,IA-Floyd,0,0
+Franklin,IA-Franklin,0,0
+Hardin,IA-Hardin,0,0
+Fremont,IA-Fremont,0,0
+Greene,IA-Greene,0,0
+Grundy,IA-Grundy,0,0
+Guthrie,IA-Guthrie,0,0
+Hamilton,IA-Hamilton,0,0
+Harrison,IA-Harrison,0,0
+Henry,IA-Henry,0,0
+Howard,IA-Howard,0,0
+Humboldt,IA-Humboldt,0,0
+Ida,IA-Ida,0,0
+Iowa,IA-Iowa,0,0
+Jackson,IA-Jackson,0,0
+Jasper,IA-Jasper,0,0
+Jefferson,IA-Jefferson,0,0
+Johnson,IA-Johnson,0,0
+Jones,IA-Jones,0,0
+Keokuk,IA-Keokuk,0,0
