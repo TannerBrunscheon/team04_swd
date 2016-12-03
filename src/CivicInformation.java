@@ -42,9 +42,6 @@ public class CivicInformation {
                     }
                 }
             }
-            System.out.println(strings[0]);
-            System.out.println(strings[1]);
-
 
         } catch (Exception e) {
 
