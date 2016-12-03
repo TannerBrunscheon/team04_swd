@@ -30,12 +30,9 @@ public class databaseManagement {
     private static final String HOUSE_ID = "1uCVZ7lJXJZC-W7_XyBZEaoSoa9cp1q7OFFkEuQyt";
     private static final String STATES_ID = "13EUNnd4lN-yrhEc0QfRBMvzaK1QujUYns5m2BcKX";
 
-    private String current;
-
     protected static DataStoreFactory dataStoreFactory;
 
-    private static final java.io.File CREDSTORE =
-            new java.io.File("Credentials/");
+    private static final java.io.File CREDSTORE = new java.io.File("Credentials/");
 
     protected static HttpTransport httpTransport;
 
@@ -52,6 +49,25 @@ public class databaseManagement {
     private static Connection connection; // manages DB connection
     private static PreparedStatement selectAllValue; // Silly statement for finding values in DB
 
+
+    private static String democraticPresidentialCandidate;
+    private static String republicanPresidentialCandidate;
+
+    public static String getDemocraticPresidentialCandidate() {
+        return democraticPresidentialCandidate;
+    }
+
+    public static void setDemocraticPresidentialCandidate(String democraticPresidentialCandidate) {
+        databaseManagement.democraticPresidentialCandidate = democraticPresidentialCandidate;
+    }
+
+    public static String getRepublicanPresidentialCandidate() {
+        return republicanPresidentialCandidate;
+    }
+
+    public static void setRepublicanPresidentialCandidate(String republicanPresidentialCandidate) {
+        databaseManagement.republicanPresidentialCandidate = republicanPresidentialCandidate;
+    }
 
     public static void toFusionTable() {
             try {
