@@ -6,7 +6,7 @@ public class TestDB {
     //private static final String URL = "jdbc:derby:/scratch/myDB";
     private static final String URL = "jdbc:postgresql://s-l112.engr.uiowa.edu:5432/postgres";
     private static final String USERNAME = "student2";
-    private static final String PASSWORD = "engr-2016-2";
+    private static final String PASSWORD = "hawkeys04";
 
     private Connection connection; // manages DB connection
     private PreparedStatement selectAllValue; // Silly statement for finding values in DB

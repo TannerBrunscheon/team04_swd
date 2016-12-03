@@ -11,5 +11,14 @@
     <orderEntry type="library" exported="" name="google-api-services-fusiontables-v2-rev15-1.22.0" level="project" />
     <orderEntry type="library" exported="" name="com.google.oauth-client:google-oauth-client-jetty:1.22.0" level="project" />
     <orderEntry type="library" name="com.google.apis:google-api-services-civicinfo:v2-rev21-1.22.0" level="project" />
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$APPLICATION_CONFIG_DIR$/jdbc-drivers/postgresql-9.4-1201.jdbc4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>
