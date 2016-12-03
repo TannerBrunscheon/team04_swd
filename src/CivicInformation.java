@@ -46,6 +46,10 @@ public class CivicInformation {
         } catch (Exception e) {
 
         }
+        if (strings[0] == null)
+        {
+            strings[0] = "AL";
+        }
         return strings;
     }
 }
