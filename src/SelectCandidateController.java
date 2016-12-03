@@ -4,10 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.util.Optional;
@@ -26,6 +23,9 @@ public class SelectCandidateController {
     private Button voteButton;
 
     @FXML
+    private CheckBox demPresBox;
+
+    @FXML
     private void initialize() {
         presidentSelect.setItems(FXCollections.observableArrayList("Bob Saget", "Other Guy"));
         senateSelect.setItems(FXCollections.observableArrayList("I guess", "Other Guy"));
@@ -42,6 +42,8 @@ public class SelectCandidateController {
         confirmationBox.setTitle("");
         confirmationBox.setHeaderText("Are you sure these are your candidates?");
         confirmationBox.setContentText("Press OK if you are sure");
+
+
 
         Optional<ButtonType> confirm = confirmationBox.showAndWait();
         if (confirm.get() == ButtonType.OK){
