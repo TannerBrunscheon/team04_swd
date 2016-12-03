@@ -13,39 +13,42 @@ import java.util.Optional;
  * Created by tmiksch on 12/3/16.
  */
 public class SelectCandidateController {
-    /*@FXML
-    private ChoiceBox presidentSelect;
-    @FXML
-    private ChoiceBox senateSelect;
-    @FXML
-    private ChoiceBox houseSelect;*/
     @FXML
     private Button voteButton;
 
     @FXML
     private CheckBox demPresBox;
+
     @FXML
     private CheckBox repPresBox;
+
     @FXML
     private CheckBox demSCBox;
+
     @FXML
     private CheckBox repSCBox;
+
     @FXML
     private CheckBox demHRBox;
+
     @FXML
     private CheckBox repHRBox;
 
     @FXML
     private void initialize() {
-        /*presidentSelect.setItems(FXCollections.observableArrayList("Bob Saget", "Other Guy"));
-        senateSelect.setItems(FXCollections.observableArrayList("I guess", "Other Guy"));
-        houseSelect.setItems(FXCollections.observableArrayList("for sure", "Other Guy"));*/
-        demPresBox.setText("");
-        demSCBox.setText("");
-        demHRBox.setText("");
-        repPresBox.setText("");
-        repSCBox.setText("");
-        repHRBox.setText("");
+        String demPres = null;// = getDemPresCandidate();
+        String repPres = null;// = getRepPresCandidate();
+        String demSen = null;// = getDemSenCandidate();
+        String repSen = null;// = getRepSenCandidate();
+        String demHouse = null;// = getDemHouseCandidate();
+        String repHouse = null;// = getRepHouseCandidate();
+
+        demPresBox.setText(demPres);
+        demSCBox.setText(demSen);
+        demHRBox.setText(demHouse);
+        repPresBox.setText(repPres);
+        repSCBox.setText(repSen);
+        repHRBox.setText(repHouse);
     }
 
     @FXML
