@@ -4,9 +4,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
+
+import java.util.Optional;
 
 /**
  * Created by tmiksch on 12/3/16.
@@ -32,14 +36,18 @@ public class SelectCandidateController {
     private void votePressed(ActionEvent event) throws Exception{
         String candidates = presidentSelect.getValue() + ", " + senateSelect.getValue() + ", " + houseSelect.getValue();
 
-        Stage stage;
-        Parent root;
+        Stage thisStage = (Stage) voteButton.getScene().getWindow();
 
-        if (presidentSelect.getValue() == null || senateSelect.getValue() == null || houseSelect.getValue() == null){
-            if (event.getSource() == voteButton){
+        Alert confirmationBox = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmationBox.setTitle("");
+        confirmationBox.setHeaderText("Are you sure these are your candidates?");
+        confirmationBox.setContentText("Press OK if you are sure");
 
-            }
+        Optional<ButtonType> confirm = confirmationBox.showAndWait();
+        if (confirm.get() == ButtonType.OK){
+            thisStage.close();
         }
+
         System.out.println(candidates);
     }
 }

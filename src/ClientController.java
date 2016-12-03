@@ -31,29 +31,32 @@ public class ClientController {
         String address = streetTextField.getText() + ", " + cityTextField.getText() + ", " + stateTextField.getText();
         System.out.println(address);
 
-        /*if (streetTextField.getText() == null || cityTextField.getText() == null || stateTextField.getText() == null){
+        Stage thisStage = (Stage) submitButton.getScene().getWindow();
+
+        if (!streetTextField.getText().equals("") && !cityTextField.getText().equals("") &&
+                !stateTextField.getText().equals("")){
+            thisStage.close();
+
+            Stage stage;
+            Parent root;
+
+            stage = new Stage();
+            root = FXMLLoader.load(getClass().getResource("SelectCandidateFX.fxml"));
+
+            stage.setTitle("Select Candidates");
+            stage.setScene(new Scene(root));
+            stage.showAndWait();
+        }
+
+        else {
             Alert error = new Alert(Alert.AlertType.ERROR);
 
-            error.setTitle("Not all inputs entered!");
-            error.setHeaderText("Please enter all variable fields");
-            error.setContentText("Press OK to reenter yur address");
+            error.setTitle("Error!");
+            error.setHeaderText("Not all address components entered");
+            error.setContentText("Press OK to reenter your address");
 
             error.showAndWait();
-        }*/
-
-        Stage thisStage = (Stage) submitButton.getScene().getWindow();
-        thisStage.close();
-
-        Stage stage;
-        Parent root;
-
-        stage = new Stage();
-        root = FXMLLoader.load(getClass().getResource("SelectCandidateFX.fxml"));
-
-        stage.setTitle("Select Candidates"); // displayed in window's title bar
-        stage.setScene(new Scene(root));
-        stage.showAndWait();
+        }
     }
-
 
 }
