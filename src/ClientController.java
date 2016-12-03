@@ -59,7 +59,7 @@ public class ClientController {
         while (streetTextField.getText() == null || cityTextField.getText() == null || stateTextField.getText() == null){
             Alert error = new Alert(Alert.AlertType.ERROR);
 
-            error.setTitle
+            //error.setTitle
         }
 
         Stage thisStage = (Stage) submitButton.getScene().getWindow();
