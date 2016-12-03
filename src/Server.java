@@ -28,68 +28,61 @@ import java.util.List;
      * Created by Tanner on 12/1/2016.
      */
     public class Server {
-        private static final String APPLICATION_NAME = "ServerForSWD";
+    private static final String APPLICATION_NAME = "ServerForSWD";
 
-        private static final String TABLE_ID = "1yjG0nIuuzsE83rqoWLkFrAvWwoQVMgLmWvhdg5ML";
+    private static final String SENATE_ID = "1yjG0nIuuzsE83rqoWLkFrAvWwoQVMgLmWvhdg5ML";
+    private static final String HOUSE_ID = "1uCVZ7lJXJZC-W7_XyBZEaoSoa9cp1q7OFFkEuQyt";
+    private static final String STATES_ID ="13EUNnd4lN-yrhEc0QfRBMvzaK1QujUYns5m2BcKX";
 
-        private static DataStoreFactory dataStoreFactory;
+    private String current;
 
-        private static final java.io.File CREDSTORE =
-                new java.io.File("Credentials/");
+    private static DataStoreFactory dataStoreFactory;
 
-        private static HttpTransport httpTransport;
+    private static final java.io.File CREDSTORE =
+            new java.io.File("Credentials/");
 
-        private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
+    private static HttpTransport httpTransport;
 
-        private static Fusiontables fusiontables;
+    private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
 
-        private static Credential access()throws Exception{
-            GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(
-                    JSON_FACTORY,new InputStreamReader(Server.class.getResourceAsStream("/client_id.json")));
+    private static Fusiontables fusiontables;
 
-            GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
-                    httpTransport, JSON_FACTORY, clientSecrets,Collections.singleton(FusiontablesScopes.FUSIONTABLES)).setDataStoreFactory(dataStoreFactory).build();
+    private static Credential access() throws Exception {
+        GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(
+                JSON_FACTORY, new InputStreamReader(Server.class.getResourceAsStream("/client_id.json")));
 
-
-
-            return new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user");
-        }
-
-        public static void main(String[] args) {
-            try {
-
-                httpTransport = GoogleNetHttpTransport.newTrustedTransport();
-                dataStoreFactory = new FileDataStoreFactory(CREDSTORE);
-                Credential credential = access();
-
-                fusiontables = new Fusiontables.Builder(httpTransport,JSON_FACTORY,credential).setApplicationName(APPLICATION_NAME).build();
-                try {
-                    Fusiontables.Query.Sql sql = fusiontables.query().sql("SELECT ROWID FROM " + TABLE_ID + " WHERE State_County = 'AL-Barbour'");
-                    Sqlresponse sqlresponse= sql.execute();
-                    List<List<Object>> list = sqlresponse.getRows();
-                    String number = list.get(0).toString().replaceAll("[^0-9]", "");
-                    Fusiontables.Query.Sql sql1 = fusiontables.query().sql("UPDATE " + TABLE_ID + " SET  Democrat = 1 WHERE ROWID = '"+number+"'");
-                    System.out.println("UPDATE " + TABLE_ID + " SET  Democrat = 1 WHERE ROWID = '"+number+"'");
-                    sql1.execute();
-                }
-                catch (IOException f){
-                    throw f;
-                }
-                Fusiontables.Table.List listTables = fusiontables.table().list();
-                TableList tablelist = listTables.execute();
-                if (tablelist.getItems() == null || tablelist.getItems().isEmpty()) {
-                    System.out.println("No tables found!");
-                    return;
-                }
-                for (Table table : tablelist.getItems()){
-                    System.out.println(table.getTableId());
-                }
+        GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
+                httpTransport, JSON_FACTORY, clientSecrets, Collections.singleton(FusiontablesScopes.FUSIONTABLES)).setDataStoreFactory(dataStoreFactory).build();
 
 
-            }
-            catch (Exception e){
-            }
-
-        }
+        return new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user");
     }
+
+    public static void main(String[] args) {
+        try {
+
+            httpTransport = GoogleNetHttpTransport.newTrustedTransport();
+            dataStoreFactory = new FileDataStoreFactory(CREDSTORE);
+            Credential credential = access();
+
+            fusiontables = new Fusiontables.Builder(httpTransport, JSON_FACTORY, credential).setApplicationName(APPLICATION_NAME).build();
+            try {
+                Fusiontables.Query.Sql sql = fusiontables.query().sql("SELECT ROWID FROM " + SENATE_ID + " WHERE State_County = 'IA-Bremer'");
+                Sqlresponse sqlresponse = sql.execute();
+                List<List<Object>> list = sqlresponse.getRows();
+                String number = list.get(0).toString().replaceAll("[^0-9]", "");
+                Fusiontables.Query.Sql sql1 = fusiontables.query().sql("UPDATE " + SENATE_ID + " SET  Democrat = 1 WHERE ROWID = '" + number + "'");
+                System.out.println("UPDATE " + SENATE_ID + " SET  Democrat = 1 WHERE ROWID = '" + number + "'");
+                sql1.execute();
+            } catch (IOException f) {
+                throw f;
+            }
+
+        } catch (Exception e) {
+        }
+
+    }
+
+}
+
 
