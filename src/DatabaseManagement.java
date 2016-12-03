@@ -23,7 +23,7 @@ import java.util.List;
  * This class contains all the static methods required to interact with the postgreSQL database
  * It also contains methods to send the data to the google fusion table.
  */
-public class databaseManagement {
+public class DatabaseManagement {
     private static final String APPLICATION_NAME = "ServerForSWD";
 
     private static final String SENATE_ID = "1yjG0nIuuzsE83rqoWLkFrAvWwoQVMgLmWvhdg5ML";
@@ -58,7 +58,7 @@ public class databaseManagement {
     }
 
     public static void setDemocraticPresidentialCandidate(String democraticPresidentialCandidate) {
-        databaseManagement.democraticPresidentialCandidate = democraticPresidentialCandidate;
+        DatabaseManagement.democraticPresidentialCandidate = democraticPresidentialCandidate;
     }
 
     public static String getRepublicanPresidentialCandidate() {
@@ -66,7 +66,7 @@ public class databaseManagement {
     }
 
     public static void setRepublicanPresidentialCandidate(String republicanPresidentialCandidate) {
-        databaseManagement.republicanPresidentialCandidate = republicanPresidentialCandidate;
+        DatabaseManagement.republicanPresidentialCandidate = republicanPresidentialCandidate;
     }
 
     public static void toFusionTable() {
