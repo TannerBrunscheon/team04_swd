@@ -69,6 +69,20 @@ public class DatabaseManagement {
         DatabaseManagement.republicanPresidentialCandidate = republicanPresidentialCandidate;
     }
 
+    public static void presidentialRaceVote(String state_county, String vote){
+        try {
+            ResultSet resultSet = null;
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            String statement = "SELECT * FROM presidentrace WHERE id = " + state_county;
+            selectAllValue = connection.prepareStatement(statement);
+            resultSet = selectAllValue.executeQuery();
+            resultSet.updateInt(vote, resultSet.getInt(vote) + 1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public static void toFusionTable() {
             try {
                 httpTransport = GoogleNetHttpTransport.newTrustedTransport();
@@ -81,7 +95,6 @@ public class DatabaseManagement {
                 connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 
                 ResultSet resultSet = null;
-
                 selectAllValue = connection.prepareStatement("SELECT * FROM presidentrace");
                 resultSet = selectAllValue.executeQuery();
                 int i = 1;
