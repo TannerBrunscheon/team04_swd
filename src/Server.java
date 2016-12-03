@@ -74,6 +74,7 @@ import java.util.List;
                 Fusiontables.Query.Sql sql1 = fusiontables.query().sql("UPDATE " + SENATE_ID + " SET  Democrat = 1 WHERE ROWID = '" + number + "'");
                 System.out.println("UPDATE " + SENATE_ID + " SET  Democrat = 1 WHERE ROWID = '" + number + "'");
                 sql1.execute();
+
             } catch (IOException f) {
                 throw f;
             }
