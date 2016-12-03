@@ -8,8 +8,8 @@ import javafx.scene.control.TextField;
 public class AuditorController {
     @FXML
     private ChoiceBox raceDropDown;
-    @FXML
-    private TextField districtIDBox;
+    //@FXML
+    //private TextField districtIDBox;
     @FXML
     private TextField districtIDBox;
 }
