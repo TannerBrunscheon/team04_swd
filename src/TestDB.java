@@ -18,7 +18,7 @@ public class TestDB {
     public TestDB() {
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            selectAllValue = connection.prepareStatement("SELECT * FROM addresses");
+            selectAllValue = connection.prepareStatement("SELECT * FROM presidentrace");
         } catch (SQLException sqlEx) {
             sqlEx.printStackTrace();
             System.exit(-1);
