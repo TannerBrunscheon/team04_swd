@@ -6,6 +6,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.ChoiceBoxListCell;
 
 import javax.annotation.Resource;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -27,5 +30,18 @@ public class ClientController {
         stateChoiceBox.setItems(FXCollections.observableArrayList("New Document", "Open "));
     }*/
 
+    @FXML
+    private TextField streetTextField;
 
+    @FXML
+    private TextField cityTextField;
+
+    @FXML
+    private TextField stateTextField;
+
+    @FXML
+    private void submitPressed(ActionEvent event){
+        String address = streetTextField.getText() + ", " + cityTextField.getText() + ", " + stateTextField.getText();
+        System.out.println(address);
+    }
 }
