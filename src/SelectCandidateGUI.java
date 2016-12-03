@@ -3,6 +3,9 @@
  */
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class SelectCandidateGUI extends Application {
@@ -12,7 +15,12 @@ public class SelectCandidateGUI extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) {
-
+    public void start(Stage primaryStage) throws Exception {
+        Parent root =
+                FXMLLoader.load(getClass().getResource("SelectCandidateFX.fxml"));
+        Scene scene = new Scene(root); // attach scene graph to scene
+        primaryStage.setTitle("Select Candidates"); // displayed in window's title bar
+        primaryStage.setScene(scene); // attach scene to stage
+        primaryStage.show(); // display the stage
     }
 }
