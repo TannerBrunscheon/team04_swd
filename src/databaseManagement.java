@@ -52,6 +52,7 @@ public class databaseManagement {
     private static Connection connection; // manages DB connection
     private static PreparedStatement selectAllValue; // Silly statement for finding values in DB
 
+
     public static void toFusionTable() {
             try {
                 httpTransport = GoogleNetHttpTransport.newTrustedTransport();
