@@ -6,7 +6,7 @@ public class TestDB {
     //private static final String URL = "jdbc:derby:/scratch/myDB";
     private static final String URL = "jdbc:postgresql://s-l112.engr.uiowa.edu:5432/postgres";
     private static final String USERNAME = "student2";
-    private static final String PASSWORD = "engr-2016-2";
+    private static final String PASSWORD = "hawkeys04";
 
     private Connection connection; // manages DB connection
     private PreparedStatement selectAllValue; // Silly statement for finding values in DB
@@ -18,7 +18,7 @@ public class TestDB {
     public TestDB() {
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            selectAllValue = connection.prepareStatement("SELECT * FROM addresses");
+            selectAllValue = connection.prepareStatement("SELECT * FROM presidentrace");
         } catch (SQLException sqlEx) {
             sqlEx.printStackTrace();
             System.exit(-1);
@@ -30,8 +30,8 @@ public class TestDB {
             resultSet = selectAllValue.executeQuery();
             results = new ArrayList<Names>();
             while (resultSet.next()) {
-                results.add(new Names(resultSet.getInt("addressid"),
-                        resultSet.getString("firstname"), resultSet.getString("lastname")
+                results.add(new Names(resultSet.getString("id"),
+                        resultSet.getInt("democrat"), resultSet.getInt("republican")
                 ));
             }
         } catch (SQLException sqlException) {
@@ -45,7 +45,7 @@ public class TestDB {
             }
         }
         for (Names n : results) {
-            System.out.print("NAME: " + n + "\n");
+            System.out.print(n);
         }
     }
 }
