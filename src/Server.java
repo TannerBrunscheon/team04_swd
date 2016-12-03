@@ -14,9 +14,6 @@ import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.fusiontables.Fusiontables;
 import com.google.api.services.fusiontables.FusiontablesScopes;
 import com.google.api.services.fusiontables.model.Sqlresponse;
-import com.google.api.services.fusiontables.model.Table;
-import com.google.api.services.fusiontables.model.TableList;
-import javafx.scene.control.Tab;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
