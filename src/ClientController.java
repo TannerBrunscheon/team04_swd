@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
@@ -12,6 +13,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import javax.annotation.Resource;
+import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -53,6 +55,12 @@ public class ClientController {
     private void submitPressed(ActionEvent event) throws Exception{
         String address = streetTextField.getText() + ", " + cityTextField.getText() + ", " + stateTextField.getText();
         System.out.println(address);
+
+        while (streetTextField.getText() == null || cityTextField.getText() == null || stateTextField.getText() == null){
+            Alert error = new Alert(Alert.AlertType.ERROR);
+
+            error.setTitle
+        }
 
         Stage thisStage = (Stage) submitButton.getScene().getWindow();
         thisStage.close();
