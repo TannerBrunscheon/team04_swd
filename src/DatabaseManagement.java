@@ -23,19 +23,16 @@ import java.util.List;
  * This class contains all the static methods required to interact with the postgreSQL database
  * It also contains methods to send the data to the google fusion table.
  */
-public class databaseManagement {
+public class DatabaseManagement {
     private static final String APPLICATION_NAME = "ServerForSWD";
 
     private static final String SENATE_ID = "1yjG0nIuuzsE83rqoWLkFrAvWwoQVMgLmWvhdg5ML";
     private static final String HOUSE_ID = "1uCVZ7lJXJZC-W7_XyBZEaoSoa9cp1q7OFFkEuQyt";
     private static final String STATES_ID = "13EUNnd4lN-yrhEc0QfRBMvzaK1QujUYns5m2BcKX";
 
-    private String current;
-
     protected static DataStoreFactory dataStoreFactory;
 
-    private static final java.io.File CREDSTORE =
-            new java.io.File("Credentials/");
+    private static final java.io.File CREDSTORE = new java.io.File("Credentials/");
 
     protected static HttpTransport httpTransport;
 
@@ -52,6 +49,25 @@ public class databaseManagement {
     private static Connection connection; // manages DB connection
     private static PreparedStatement selectAllValue; // Silly statement for finding values in DB
 
+
+    private static String democraticPresidentialCandidate;
+    private static String republicanPresidentialCandidate;
+
+    public static String getDemocraticPresidentialCandidate() {
+        return democraticPresidentialCandidate;
+    }
+
+    public static void setDemocraticPresidentialCandidate(String democraticPresidentialCandidate) {
+        DatabaseManagement.democraticPresidentialCandidate = democraticPresidentialCandidate;
+    }
+
+    public static String getRepublicanPresidentialCandidate() {
+        return republicanPresidentialCandidate;
+    }
+
+    public static void setRepublicanPresidentialCandidate(String republicanPresidentialCandidate) {
+        DatabaseManagement.republicanPresidentialCandidate = republicanPresidentialCandidate;
+    }
 
     public static void toFusionTable() {
             try {

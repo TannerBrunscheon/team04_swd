@@ -18,7 +18,6 @@ import com.google.api.services.fusiontables.model.Sqlresponse;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
