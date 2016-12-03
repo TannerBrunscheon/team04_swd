@@ -20,9 +20,6 @@ public class ClientController {
     private TextField cityTextField;
 
     @FXML
-    private TextField stateTextField;
-
-    @FXML
     private Button submitButton;
 
     @FXML
