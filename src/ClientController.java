@@ -52,7 +52,7 @@ public class ClientController {
 
             String[] information = CivicInformation.getCounty(street+city+state);
 
-            //information[0]
+
 
             thisStage.close();
 
