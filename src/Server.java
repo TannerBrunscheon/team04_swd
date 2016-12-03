@@ -21,6 +21,7 @@ import javafx.scene.control.Tab;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Collections;
+import java.util.List;
 
 
 /**
@@ -63,11 +64,12 @@ import java.util.Collections;
 
                 fusiontables = new Fusiontables.Builder(httpTransport,JSON_FACTORY,credential).setApplicationName(APPLICATION_NAME).build();
                 try {
-                    Fusiontables.Query.Sql sql = fusiontables.query().sql("SELECT ROWID FROM " + TABLE_ID + " WHERE  GEO_ID = '1003'");
+                    Fusiontables.Query.Sql sql = fusiontables.query().sql("SELECT ROWID FROM " + TABLE_ID + " WHERE State_County = 'AL-Barbour'");
                     Sqlresponse sqlresponse= sql.execute();
-
-                    Fusiontables.Query.Sql sql1 = fusiontables.query().sql("UPDATE " + TABLE_ID + " SET  Democrat = 1 WHERE ROWID = ''");
-                    System.out.println("UPDATE " + TABLE_ID + " SET  Democrat = 1 WHERE ROWID = '"+sqlresponse.toString()+"'");
+                    List<List<Object>> list = sqlresponse.getRows();
+                    String number = list.get(0).toString().replaceAll("[^0-9]", "");
+                    Fusiontables.Query.Sql sql1 = fusiontables.query().sql("UPDATE " + TABLE_ID + " SET  Democrat = 1 WHERE ROWID = '"+number+"'");
+                    System.out.println("UPDATE " + TABLE_ID + " SET  Democrat = 1 WHERE ROWID = '"+number+"'");
                     sql1.execute();
                 }
                 catch (IOException f){
