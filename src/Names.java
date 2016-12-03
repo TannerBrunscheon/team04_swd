@@ -2,48 +2,44 @@
  * Created by johnsonhj on 11/30/16.
  */
 public class Names {
-    private int nameID;
-    private String firstName;
-    private String lastName;
+    private String nameID;
+    private int democrat;
+    private int republican;
 
-    Names(int nameID, String firstName, String lastName)
+    Names(String nameID, int democrat, int republican)
     {
         this.nameID = nameID;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.democrat = democrat;
+        this.republican = republican;
     }
 
-    public int getNameID() {
+    public String getNameID() {
         return nameID;
     }
 
-    public void setNameID(int nameID) {
+    public void setNameID(String nameID) {
         this.nameID = nameID;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public int getDemocrat() {
+        return democrat;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setDemocrat(int democrat) {
+        this.democrat = democrat;
     }
 
-    public String getLastName() {
-        return lastName;
+    public int getRepublican() {
+        return republican;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setRepublican(int republican) {
+        this.republican = republican;
     }
 
     @Override
     public String toString() {
-        return "Names{" +
-                "nameID=" + nameID +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                '}';
+        return nameID + ": " + "dem: " + democrat + "    rep: " + republican + "\n";
     }
 }
 

@@ -30,8 +30,8 @@ public class TestDB {
             resultSet = selectAllValue.executeQuery();
             results = new ArrayList<Names>();
             while (resultSet.next()) {
-                results.add(new Names(resultSet.getInt("addressid"),
-                        resultSet.getString("firstname"), resultSet.getString("lastname")
+                results.add(new Names(resultSet.getString("id"),
+                        resultSet.getInt("democrat"), resultSet.getInt("republican")
                 ));
             }
         } catch (SQLException sqlException) {
@@ -45,7 +45,7 @@ public class TestDB {
             }
         }
         for (Names n : results) {
-            System.out.print("NAME: " + n + "\n");
+            System.out.print(n);
         }
     }
 }

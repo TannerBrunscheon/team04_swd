@@ -7,8 +7,8 @@
     <schema id="2" parent="1" name="student2">
       <object-id>16467</object-id>
       <visible>1</visible>
-      <introspection-state-number>2397</introspection-state-number>
-      <introspection-timestamp>2016-12-03.11:53:03.162</introspection-timestamp>
+      <introspection-state-number>2469</introspection-state-number>
+      <introspection-timestamp>2016-12-03.12:08:42.516</introspection-timestamp>
     </schema>
     <schema id="3" parent="1" name="pg_catalog">
       <object-id>11</object-id>
@@ -48,15 +48,15 @@
     </schema>
     <table id="15" parent="2" name="houseelection">
       <object-id>17748</object-id>
-      <state-number>2395</state-number>
+      <state-number>2461</state-number>
     </table>
     <table id="16" parent="2" name="presidentrace">
       <object-id>17212</object-id>
-      <state-number>2396</state-number>
+      <state-number>2467</state-number>
     </table>
     <table id="17" parent="2" name="votinginformation">
       <object-id>17256</object-id>
-      <state-number>2397</state-number>
+      <state-number>2469</state-number>
     </table>
     <column id="18" parent="15" name="c_disttype">
       <state-number>2362</state-number>
@@ -66,13 +66,15 @@
       <state-number>2366</state-number>
       <data-type>text|0</data-type>
     </column>
-    <column id="20" parent="15" name="republican">
-      <state-number>2371</state-number>
-      <data-type>text|0</data-type>
+    <column id="20" parent="15" name="democrat">
+      <state-number>2460</state-number>
+      <data-type>integer|0</data-type>
+      <default-expression>0</default-expression>
     </column>
-    <column id="21" parent="15" name="democrat">
-      <state-number>2370</state-number>
-      <data-type>text|0</data-type>
+    <column id="21" parent="15" name="republican">
+      <state-number>2461</state-number>
+      <data-type>integer|0</data-type>
+      <default-expression>0</default-expression>
     </column>
     <column id="22" parent="16" name="name">
       <state-number>2163</state-number>
@@ -83,12 +85,14 @@
       <data-type>text|0</data-type>
     </column>
     <column id="24" parent="16" name="democrat">
-      <state-number>2162</state-number>
-      <data-type>text|0</data-type>
+      <state-number>2466</state-number>
+      <data-type>integer|0</data-type>
+      <default-expression>0</default-expression>
     </column>
     <column id="25" parent="16" name="republican">
-      <state-number>2165</state-number>
-      <data-type>text|0</data-type>
+      <state-number>2467</state-number>
+      <data-type>integer|0</data-type>
+      <default-expression>0</default-expression>
     </column>
     <column id="26" parent="17" name="county name">
       <state-number>2388</state-number>
@@ -98,13 +102,15 @@
       <state-number>2389</state-number>
       <data-type>text|0</data-type>
     </column>
-    <column id="28" parent="17" name="republican">
-      <state-number>2390</state-number>
-      <data-type>text|0</data-type>
+    <column id="28" parent="17" name="democrat">
+      <state-number>2468</state-number>
+      <data-type>integer|0</data-type>
+      <default-expression>0</default-expression>
     </column>
-    <column id="29" parent="17" name="democrat">
-      <state-number>2391</state-number>
-      <data-type>text|0</data-type>
+    <column id="29" parent="17" name="republican">
+      <state-number>2469</state-number>
+      <data-type>integer|0</data-type>
+      <default-expression>0</default-expression>
     </column>
   </database-model>
 </dataSource>
