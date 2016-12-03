@@ -1,12 +1,11 @@
+import com.sun.javaws.jnl.InformationDesc;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 /**
@@ -27,6 +26,17 @@ public class ClientController {
     private Button submitButton;
 
     @FXML
+    private ChoiceBox stateSelect;
+
+    /*@FXML
+    private void initialize() {
+        stateSelect.setItems(FXCollections.observableArrayList("AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL",
+                "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO",
+                "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC",
+                "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"));
+    }*/
+
+    @FXML
     private void submitPressed(ActionEvent event) throws Exception{
         String address = streetTextField.getText() + ", " + cityTextField.getText() + ", " + stateTextField.getText();
         System.out.println(address);
@@ -35,6 +45,15 @@ public class ClientController {
 
         if (!streetTextField.getText().equals("") && !cityTextField.getText().equals("") &&
                 !stateTextField.getText().equals("")){
+
+            String street = streetTextField.getText();
+            String city = cityTextField.getText();
+            String state = stateTextField.getText();
+
+            String[] information = CivicInformation.getCounty(street+city+state);
+
+            //information[0]
+
             thisStage.close();
 
             Stage stage;
