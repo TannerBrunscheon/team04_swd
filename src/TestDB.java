@@ -24,15 +24,13 @@ public class TestDB {
             System.exit(-1);
         }
 
-        List<Names> results = null;
+
         ResultSet resultSet = null;
         try {
             resultSet = selectAllValue.executeQuery();
-            results = new ArrayList<Names>();
+
             while (resultSet.next()) {
-                results.add(new Names(resultSet.getString("id"),
-                        resultSet.getInt("democrat"), resultSet.getInt("republican")
-                ));
+
             }
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
@@ -44,8 +42,6 @@ public class TestDB {
                 //close();
             }
         }
-        for (Names n : results) {
-            System.out.print(n);
-        }
+
     }
 }
