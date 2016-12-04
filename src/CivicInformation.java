@@ -47,10 +47,12 @@ public class CivicInformation {
         } catch (Exception e) {
 
         }
-        if (strings[0] == null)
-        {
+
+        if (strings[0] == null) {
             strings[0] = "AL";
-        }
+        } else if (Integer.parseInt(strings[0]) < 10) {
+            strings[0] = "0"+strings[0];
+            }
         return strings;
     }
 }

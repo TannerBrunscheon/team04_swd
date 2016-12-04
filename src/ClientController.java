@@ -63,13 +63,13 @@ public class ClientController {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("SelectCandidateFX.fxml"));
 
-
+            information[1] = information[1].substring(0, 1).toUpperCase() + information[1].substring(1);
             root = loader.load();
             SelectCandidateController controller = (SelectCandidateController) loader.getController();
 
             controller.setId(state);
-            controller.setSsnn(state+information[0]);
-            controller.setState_county(state+information[1]);
+            controller.setSsnn(state+"-"+information[0]);
+            controller.setState_county(state+"-"+information[1]);
 
             stage.setTitle("Select Candidates");
             stage.setScene(new Scene(root));

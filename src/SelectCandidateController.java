@@ -39,17 +39,7 @@ public class SelectCandidateController {
 
     @FXML
     private void initialize() {
-        String demPres = DatabaseManagement.getDemocraticPresidentialCandidate();
-        String repPres = DatabaseManagement.getRepublicanPresidentialCandidate();
-        String[] senators = DatabaseManagement.getSenateCandidates(ssnn);
-        String[] house = DatabaseManagement.getHouseCandidates(state_county);
-
-        demPresBox.setText(demPres);
-        demSCBox.setText(senators[0]);
-        demHRBox.setText(house[0]);
-        repPresBox.setText(repPres);
-        repSCBox.setText(senators[1]);
-        repHRBox.setText(house[1]);
+        updateInfo();
     }
 
     @FXML
@@ -110,13 +100,30 @@ public class SelectCandidateController {
 
     public void setId(String id) {
         this.id = id;
+        updateInfo();
     }
 
     public void setSsnn(String ssnn) {
         this.ssnn = ssnn;
+        updateInfo();
     }
 
     public void setState_county(String state_county) {
         this.state_county = state_county;
+        updateInfo();
+    }
+
+    private void updateInfo(){
+        String demPres = DatabaseManagement.getDemocraticPresidentialCandidate();
+        String repPres = DatabaseManagement.getRepublicanPresidentialCandidate();
+        String[] senators = DatabaseManagement.getSenateCandidates(state_county);
+        String[] house = DatabaseManagement.getHouseCandidates(ssnn);
+
+        demPresBox.setText(demPres);
+        demSCBox.setText(senators[0]);
+        demHRBox.setText(house[0]);
+        repPresBox.setText(repPres);
+        repSCBox.setText(senators[1]);
+        repHRBox.setText(house[1]);
     }
 }
