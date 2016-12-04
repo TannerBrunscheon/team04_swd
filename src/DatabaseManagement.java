@@ -72,12 +72,16 @@ public class DatabaseManagement {
     public static void setHouseCandidates(String ss_nn, String demCandidate, String repCandidate){
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            String statement = "UPDATE houserace SET demcandidate = " + demCandidate + " WHERE ss-nn = '" + ss_nn +"'";
+            String statement = "UPDATE houserace SET demcandidate = '" + demCandidate + "' WHERE ssnn = '" + ss_nn +"'";
             connection.prepareStatement(statement).executeQuery();
+            connection.close();
+        } catch (SQLException e) {
 
-            statement = "UPDATE houserace SET repcandidate = " + repCandidate + " WHERE ss-nn = '" + ss_nn +"'";
+        }
+        try {
+            String statement = "UPDATE houserace SET repcandidate = '" + repCandidate + "' WHERE ssnn = '" + ss_nn +"'";
             connection.prepareStatement(statement).executeQuery();
-
+            connection.close();
         } catch (SQLException e) {
 
         }
@@ -89,12 +93,13 @@ public class DatabaseManagement {
             selectAllValue = connection.prepareStatement("SELECT * FROM houserace");
             ResultSet resultSet = selectAllValue.executeQuery();
             while(resultSet.next()){
-                if(resultSet.getString("ss-nn").equals(ss_nn)){
+                if(resultSet.getString("ssnn").equals(ss_nn)){
                     candidates[0] = resultSet.getString("demcandidate");
                     candidates[1] = resultSet.getString("repcandidate");
                 }
 
             }
+            resultSet.close();
         }catch (SQLException e){
 
         }
@@ -104,10 +109,15 @@ public class DatabaseManagement {
     public static void setSenateCandidates(String state_county, String demCandidate, String repCandidate){
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            String statement = "UPDATE senaterace SET demcandidate = " + demCandidate + " WHERE state_county = '" + state_county +"'";
+            String statement = "UPDATE senaterace SET demcandidate = '" + demCandidate + "' WHERE state_county = '" + state_county +"'";
             connection.prepareStatement(statement).executeQuery();
 
-            statement = "UPDATE senaterace SET repcandidate = " + repCandidate + " WHERE state_county = '" + state_county+"'";
+        } catch (SQLException e) {
+
+        }
+        try {
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            String statement = "UPDATE senaterace SET repcandidate = '" + repCandidate + "' WHERE state_county = '" + state_county+"'";
             connection.prepareStatement(statement).executeQuery();
 
         } catch (SQLException e) {
@@ -148,7 +158,7 @@ public class DatabaseManagement {
     public static void houseRaceVote(String ss_nn, String vote){
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            String statement = "UPDATE houserace SET " + vote + " = " + vote + " + 1 WHERE ss-nn = '" + ss_nn +"'";
+            String statement = "UPDATE houserace SET " + vote + " = " + vote + " + 1 WHERE ssnn = '" + ss_nn +"'";
             connection.prepareStatement(statement).executeQuery();
 
         } catch (SQLException e) {
@@ -160,7 +170,7 @@ public class DatabaseManagement {
     public static void senateRaceVote(String state_county, String vote){
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            String statement = "UPDATE senaterace SET " + vote + " = " + vote + " + 1 WHERE ss-nn = '" + state_county +"'";
+            String statement = "UPDATE senaterace SET " + vote + " = " + vote + " + 1 WHERE ssnn = '" + state_county +"'";
             connection.prepareStatement(statement).executeQuery();
 
         } catch (SQLException e) {
@@ -219,8 +229,8 @@ public class DatabaseManagement {
                 resultSet = selectAllValue.executeQuery();
                 i = 1;
                 while (resultSet.next() && i <= 14) {
-                    if (resultSet.getString("ss-nn").contains("IA-")) {
-                        Fusiontables.Query.Sql sql = fusiontables.query().sql("SELECT ROWID FROM " + HOUSE_ID + " WHERE ss-nn = '"+ resultSet.getString("ss-nn") +"'");
+                    if (resultSet.getString("ssnn").contains("IA-")) {
+                        Fusiontables.Query.Sql sql = fusiontables.query().sql("SELECT ROWID FROM " + HOUSE_ID + " WHERE ssnn = '"+ resultSet.getString("ssnn") +"'");
                         Sqlresponse sqlresponse = sql.execute();
                         List<List<Object>> list = sqlresponse.getRows();
                         String number = list.get(0).toString().replaceAll("[^0-9]", "");

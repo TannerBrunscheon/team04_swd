@@ -7,8 +7,8 @@
     <schema id="2" parent="1" name="student2">
       <object-id>16467</object-id>
       <visible>1</visible>
-      <introspection-state-number>2717</introspection-state-number>
-      <introspection-timestamp>2016-12-03.17:34:01.061</introspection-timestamp>
+      <introspection-state-number>2778</introspection-state-number>
+      <introspection-timestamp>2016-12-03.19:11:55.108</introspection-timestamp>
     </schema>
     <schema id="3" parent="1" name="pg_catalog">
       <object-id>11</object-id>
@@ -67,8 +67,8 @@
       <data-type>integer|0</data-type>
       <default-expression>0</default-expression>
     </column>
-    <column id="20" parent="15" name="ss-nn">
-      <state-number>2366</state-number>
+    <column id="20" parent="15" name="ssnn">
+      <state-number>2778</state-number>
       <data-type>text|0</data-type>
     </column>
     <column id="21" parent="15" name="republican">
