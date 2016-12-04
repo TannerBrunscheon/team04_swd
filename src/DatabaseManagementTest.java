@@ -3,6 +3,7 @@
  */
 public class DatabaseManagementTest {
     public static void main(String[] args){
+        /*
         DatabaseManagement.presidentialRaceVote("IA", "democrat");
         DatabaseManagement.presidentialRaceVote("IA", "democrat");
         DatabaseManagement.presidentialRaceVote("IA", "democrat");
@@ -10,5 +11,8 @@ public class DatabaseManagementTest {
 
         DatabaseManagement.presidentialRaceVote("IA", "republican");
         DatabaseManagement.presidentialRaceVote("IA", "republican");
+        */
+
+        DatabaseManagement.setHouseCandidates("IA-01", "Hillary", "republican");
     }
 }
