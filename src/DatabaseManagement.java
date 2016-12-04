@@ -53,22 +53,44 @@ public class DatabaseManagement {
     private static String democraticPresidentialCandidate;
     private static String republicanPresidentialCandidate;
 
+    /**
+     * This is the getter method for the democratic presidential candidate
+     * @return Returns a string containing the name of the democratic presidential candidate.
+     */
     public static String getDemocraticPresidentialCandidate() {
         return democraticPresidentialCandidate;
     }
 
+    /**
+     * This is the setter method for the democratic presidential candidate
+     * @param democraticPresidentialCandidate A string containing the desired name of the democratic candidate.
+     */
     public static void setDemocraticPresidentialCandidate(String democraticPresidentialCandidate) {
         DatabaseManagement.democraticPresidentialCandidate = democraticPresidentialCandidate;
     }
 
+    /**
+     * This is the getter method for the republican presidential candidate
+     * @return Returns a string containing the name of the republican presidential candidate.
+     */
     public static String getRepublicanPresidentialCandidate() {
         return republicanPresidentialCandidate;
     }
 
+    /**
+     * This is the setter method for the republican presidential candidate
+     * @param republicanPresidentialCandidate A string containing the desired name of the republican candidate.
+     */
     public static void setRepublicanPresidentialCandidate(String republicanPresidentialCandidate) {
         DatabaseManagement.republicanPresidentialCandidate = republicanPresidentialCandidate;
     }
 
+    /**
+     * This method uses the SQL database to set the house candidates within a specific house district
+     * @param ss_nn The house district where the candidates are to be named
+     * @param demCandidate The democratic candidate
+     * @param repCandidate The republican candidate
+     */
     public static void setHouseCandidates(String ss_nn, String demCandidate, String repCandidate){
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
@@ -84,6 +106,12 @@ public class DatabaseManagement {
 
         }
     }
+
+    /**
+     * This method accesses the SQL database to retrieve the house dem and rep candidates within the specific district
+     * @param ss_nn The district where the user wants to know the candidates
+     * @return An array of strings. Index 0 contains the dem candidate, index 1 contains the rep candidate
+     */
     public static String[] getHouseCandidates(String ss_nn){
         String[] candidates = new String[2];
         try {
@@ -104,6 +132,12 @@ public class DatabaseManagement {
         return candidates;
     }
 
+    /**
+     * This method uses the SQL database to set the senate candidates within a specific state and county
+     * @param state_county The county where the candidates are to be named
+     * @param demCandidate The democratic candidate
+     * @param repCandidate The republican candidate
+     */
     public static void setSenateCandidates(String state_county, String demCandidate, String repCandidate){
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
@@ -122,6 +156,12 @@ public class DatabaseManagement {
 
         }
     }
+
+    /**
+     * This method accesses the SQL database to retrieve the house dem and rep candidates within the specific state
+     * @param state_county The state where the user wants to know the candidates
+     * @return An array of strings. Index 0 contains the dem candidate, index 1 contains the rep candidate
+     */
     public static String[] getSenateCandidates(String state_county){
         String[] candidates = new String[2];
         try {
@@ -141,6 +181,12 @@ public class DatabaseManagement {
         return candidates;
     }
 
+    /**
+     * This method is used to vote for a candidate at the presidential level. It increments a value in the sql database
+     * by 1
+     * @param state_county The state where the user is voting
+     * @param vote The vote the user is selecting either dem or rep
+     */
     public static void presidentialRaceVote(String state_county, String vote){
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
@@ -153,6 +199,11 @@ public class DatabaseManagement {
 
     }
 
+    /**
+     * This casts a single vote in a house race, incrementing a specific sql value by 1
+     * @param ss_nn The house district where the user is voting
+     * @param vote The vote, either democrat or republican
+     */
     public static void houseRaceVote(String ss_nn, String vote){
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
@@ -165,6 +216,11 @@ public class DatabaseManagement {
 
     }
 
+    /**
+     * This casts a single vote in the senate race.
+     * @param state_county This is the state and county where the person is voting from
+     * @param vote This is the choice that the user is selecting, either democrat or republican
+     */
     public static void senateRaceVote(String state_county, String vote){
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
@@ -176,6 +232,10 @@ public class DatabaseManagement {
         }
     }
 
+    /**
+     * This method is used by the autditor to send some of the data to the Google Fusion table where it can be
+     * displayed as a map containing red and blue within specific regions depending on the votes recieved
+     */
     public static void toFusionTable() {
             try {
                 httpTransport = GoogleNetHttpTransport.newTrustedTransport();
