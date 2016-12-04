@@ -13,6 +13,9 @@ import java.util.Optional;
  * Created by tmiksch on 12/3/16.
  */
 public class SelectCandidateController {
+    private String id;
+    private String ssnn;
+    private String state_county;
     @FXML
     private Button voteButton;
 
@@ -38,8 +41,8 @@ public class SelectCandidateController {
     private void initialize() {
         String demPres = DatabaseManagement.getDemocraticPresidentialCandidate();
         String repPres = DatabaseManagement.getRepublicanPresidentialCandidate();
-        String[] senators = null;//DatabaseManagement.getSenateCandidates(ss-nn);
-        String[] house = null;// DatabaseManagement.getHouseCandidates(state_county);
+        String[] senators = DatabaseManagement.getSenateCandidates(ssnn);
+        String[] house = DatabaseManagement.getHouseCandidates(state_county);
 
         demPresBox.setText(demPres);
         demSCBox.setText(null);
@@ -90,28 +93,40 @@ public class SelectCandidateController {
             Optional<ButtonType> confirm = confirmationBox.showAndWait();
             if (confirm.get() == ButtonType.OK){
                 if (demPresBox.isSelected()){
-                    //PresidentVote(id, "democrat");
+                    DatabaseManagement.presidentialRaceVote(id, "democrat");
                 }
                 else if (repPresBox.isSelected()){
-                    //PresidentVote(id, "republican");
+                    DatabaseManagement.presidentialRaceVote(id, "republican");
                 }
 
                 if (demSCBox.isSelected()){
-                    //SenateRaceVote(state_county, "democrat");
+                    DatabaseManagement.senateRaceVote(state_county, "democrat");
                 }
                 else if (repSCBox.isSelected()){
-                    //SenateRaceVote(state_county, "republican");
+                    DatabaseManagement.senateRaceVote(state_county, "republican");
                 }
 
                 if (demHRBox.isSelected()){
-                    //HouseElectionVote(ss-nn, "democrat");
+                    DatabaseManagement.houseRaceVote(ssnn, "democrat");
                 }
                 else if(repHRBox.isSelected()){
-                    //HouseElectionVote(ss-nn, "republican");
+                    DatabaseManagement.houseRaceVote(ssnn, "republican");
                 }
 
                 voteStage.close();
             }
         }
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setSsnn(String ssnn) {
+        this.ssnn = ssnn;
+    }
+
+    public void setState_county(String state_county) {
+        this.state_county = state_county;
     }
 }

@@ -1,4 +1,5 @@
 import com.sun.javaws.jnl.InformationDesc;
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.Loader;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,6 +13,7 @@ import javafx.stage.Stage;
  * Created by tmiksch on 12/3/16.
  */
 public class ClientController {
+
 
     @FXML
     private TextField streetTextField;
@@ -59,7 +61,13 @@ public class ClientController {
             Parent root;
 
             stage = new Stage();
-            root = FXMLLoader.load(getClass().getResource("SelectCandidateFX.fxml"));
+            FXMLLoader loader = FXMLLoader.load(getClass().getResource("SelectCandidateFX.fxml"));
+            root = loader.load();
+
+            SelectCandidateController controller = loader.getController();
+            controller.setId(state);
+            controller.setSsnn(state+information[0]);
+            controller.setState_county(state+information[1]);
 
             stage.setTitle("Select Candidates");
             stage.setScene(new Scene(root));
