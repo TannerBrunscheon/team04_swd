@@ -24,11 +24,7 @@ public class AuditorController {
     @FXML
     private Button addButton;
     @FXML
-    private Button pushPres;
-    @FXML
-    private Button pushSen;
-    @FXML
-    private Button pushHouse;
+    private Button pushFus;
 
     @FXML
     private void initialize() {
@@ -61,20 +57,35 @@ public class AuditorController {
         });
 
     }
-
     @FXML
-    private void presPressed(ActionEvent event) throws Exception{
+    private void addPressed(ActionEvent event) throws Exception{
+        switch (raceDropDown.getValue().toString()){
+            case "President":
+            if (repubBox.getText()!=null&&demBox.getText()!=null){
+                DatabaseManagement.setDemocraticPresidentialCandidate(demBox.getText());
+                DatabaseManagement.setRepublicanPresidentialCandidate(repubBox.getText());
+            }
+            break;
+
+            case "Senate":
+
+                if (repubBox.getText()!=null&&demBox.getText()!=null){
+                    DatabaseManagement.setDemocraticPresidentialCandidate(demBox.getText());
+                    DatabaseManagement.setRepublicanPresidentialCandidate(repubBox.getText());
+                }
+                break;
+
+            case "House":
+                districtIDBox.setDisable(false);
+                stateBox.setDisable(false);
+                break;
+        }
+
 
     }
 
     @FXML
-    private void senPressed(ActionEvent event) throws Exception{
-
+    private void fusPressed(ActionEvent event) throws Exception{
+        DatabaseManagement.toFusionTable();
     }
-
-    @FXML
-    private void housePressed(ActionEvent event) throws Exception{
-
-    }
-
 }

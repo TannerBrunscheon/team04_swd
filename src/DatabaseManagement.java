@@ -69,11 +69,74 @@ public class DatabaseManagement {
         DatabaseManagement.republicanPresidentialCandidate = republicanPresidentialCandidate;
     }
 
+    public static void setHouseCandidates(String ss_nn, String demCandidate, String repCandidate){
+        try {
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            String statement = "UPDATE houserace SET demcandidate = " + demCandidate + " + 1 WHERE ss-nn = '" + ss_nn +"'";
+            connection.prepareStatement(statement).executeQuery();
+
+            statement = "UPDATE houserace SET repcandidate = " + repCandidate + " + 1 WHERE ss-nn = '" + ss_nn +"'";
+            connection.prepareStatement(statement).executeQuery();
+
+        } catch (SQLException e) {
+
+        }
+    }
+    public static String[] getHouseCandidates(String ss_nn){
+        String[] candidates = new String[2];
+        try {
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            selectAllValue = connection.prepareStatement("SELECT * FROM houserace");
+            ResultSet resultSet = selectAllValue.executeQuery();
+            while(resultSet.next()){
+                if(resultSet.getString("ss-nn").equals(ss_nn)){
+                    candidates[0] = resultSet.getString("demcandidate");
+                    candidates[1] = resultSet.getString("repcandidate");
+                }
+
+            }
+        }catch (SQLException e){
+
+        }
+        return candidates;
+    }
+
+    public static void setSenateCandidates(String state_county, String demCandidate, String repCandidate){
+        try {
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            String statement = "UPDATE senaterace SET demcandidate = " + demCandidate + " + 1 WHERE state_county = '" + state_county +"'";
+            connection.prepareStatement(statement).executeQuery();
+
+            statement = "UPDATE senaterace SET repcandidate = " + repCandidate + " + 1 WHERE state_county = '" + state_county+"'";
+            connection.prepareStatement(statement).executeQuery();
+
+        } catch (SQLException e) {
+
+        }
+    }
+    public static String[] getSenateCandidates(String state_county){
+        String[] candidates = new String[2];
+        try {
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            selectAllValue = connection.prepareStatement("SELECT * FROM senaterace");
+            ResultSet resultSet = selectAllValue.executeQuery();
+            while(resultSet.next()){
+                if(resultSet.getString("state_county").equals(state_county)){
+                    candidates[0] = resultSet.getString("demcandidate");
+                    candidates[1] = resultSet.getString("repcandidate");
+                }
+
+            }
+        }catch (SQLException e){
+
+        }
+        return candidates;
+    }
+
     public static void presidentialRaceVote(String state_county, String vote){
         try {
-
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            String statement = "UPDATE presidentrace SET '" + vote + " = " + vote + "' + 1 WHERE id = '" + state_county +"'";
+            String statement = "UPDATE presidentrace SET " + vote + " = " + vote + " + 1 WHERE id = '" + state_county +"'";
             connection.prepareStatement(statement).executeQuery();
 
         } catch (SQLException e) {
@@ -85,13 +148,24 @@ public class DatabaseManagement {
     public static void houseRaceVote(String ss_nn, String vote){
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            String statement = "UPDATE presidentrace SET democrat = democrat + 1 WHERE id = '" + ss_nn +"'";
+            String statement = "UPDATE houserace SET " + vote + " = " + vote + " + 1 WHERE ss-nn = '" + ss_nn +"'";
             connection.prepareStatement(statement).executeQuery();
 
         } catch (SQLException e) {
 
         }
 
+    }
+
+    public static void senateRaceVote(String state_county, String vote){
+        try {
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            String statement = "UPDATE senaterace SET " + vote + " = " + vote + " + 1 WHERE ss-nn = '" + state_county +"'";
+            connection.prepareStatement(statement).executeQuery();
+
+        } catch (SQLException e) {
+
+        }
     }
 
     public static void toFusionTable() {
