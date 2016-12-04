@@ -71,14 +71,25 @@ public class DatabaseManagement {
 
     public static void presidentialRaceVote(String state_county, String vote){
         try {
-            ResultSet resultSet = null;
+
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            String statement = "SELECT * FROM presidentrace WHERE id = " + state_county;
-            selectAllValue = connection.prepareStatement(statement);
-            resultSet = selectAllValue.executeQuery();
-            resultSet.updateInt(vote, resultSet.getInt(vote) + 1);
+            String statement = "UPDATE presidentrace SET '" + vote + " = " + vote + "' + 1 WHERE id = '" + state_county +"'";
+            connection.prepareStatement(statement).executeQuery();
+
         } catch (SQLException e) {
-            e.printStackTrace();
+
+        }
+
+    }
+
+    public static void houseRaceVote(String ss_nn, String vote){
+        try {
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            String statement = "UPDATE presidentrace SET democrat = democrat + 1 WHERE id = '" + ss_nn +"'";
+            connection.prepareStatement(statement).executeQuery();
+
+        } catch (SQLException e) {
+
         }
 
     }
