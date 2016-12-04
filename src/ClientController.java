@@ -40,13 +40,13 @@ public class ClientController {
         Stage thisStage = (Stage) submitButton.getScene().getWindow();
 
         if (!streetTextField.getText().equals("") && !cityTextField.getText().equals("") &&
-                stateSelect.getValue() != null){
+                stateSelect.getValue() != null) {
 
             String street = streetTextField.getText();
             String city = cityTextField.getText();
             String state = stateSelect.getValue().toString();
 
-            String[] information = CivicInformation.getCounty(street+city+state);
+            String[] information = CivicInformation.getCounty(street + city + state);
 
             thisStage.close();
 
@@ -62,8 +62,8 @@ public class ClientController {
             SelectCandidateController controller = (SelectCandidateController) loader.getController();
 
             controller.setId(state);
-            controller.setSsnn(state+"-"+information[0]);
-            controller.setState_county(state+"-"+information[1]);
+            controller.setSsnn(state + "-" + information[0]);
+            controller.setState_county(state + "-" + information[1]);
 
             stage.setTitle("Select Candidates");
             stage.setScene(new Scene(root));
