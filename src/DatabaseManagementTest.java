@@ -13,6 +13,7 @@ public class DatabaseManagementTest {
         DatabaseManagement.presidentialRaceVote("IA", "republican");
         */
 
-        DatabaseManagement.setHouseCandidates("IA-01", "demmy dumbface", "dumbs");
+        DatabaseManagement.setSenateCandidates("AK", "demmy dumbface", "dumbs");
+        //DatabaseManagement.setHouseCandidates("IA-01", "demmy dumbface", "dumbs");
     }
 }
