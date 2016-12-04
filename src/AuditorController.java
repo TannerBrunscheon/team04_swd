@@ -86,23 +86,23 @@ public class AuditorController {
 
             case "Senate":
                 if (repubBox.getText()!=null&&demBox.getText()!=null&&
-                        stateBox.getValue() != null){
-                    DatabaseManagement.setSenateCandidates(stateBox.getValue().toString(),demBox.getText(),repubBox.getText());
+                        stateBox.getSelectionModel().getSelectedItem().toString() != null){
+                    DatabaseManagement.setSenateCandidates(stateBox.getSelectionModel().getSelectedItem().toString(),demBox.getText(),repubBox.getText());
+                    System.out.println(stateBox.getSelectionModel().getSelectedItem().toString() + demBox.getText()+repubBox.getText());
                 }
                 else  {
                     Alert error = new Alert(Alert.AlertType.ERROR);
 
                     error.setTitle("Error!");
                     error.setHeaderText("Fill all canidates");
-
                     error.showAndWait();
                 }
                 break;
 
             case "House":
                 if (repubBox.getText()!=null&&demBox.getText()!=null&&
-                        stateBox.getValue() != null&&districtIDBox.getText()!=null){
-                    DatabaseManagement.setHouseCandidates(stateBox.getValue().toString()+"-"+districtIDBox.getText(),demBox.getText(),repubBox.getText());
+                        stateBox.getSelectionModel().getSelectedItem().toString() != null&&districtIDBox.getText()!=null){
+                    DatabaseManagement.setHouseCandidates(stateBox.getSelectionModel().getSelectedItem().toString()+"-"+districtIDBox.getText(),demBox.getText(),repubBox.getText());
                 }
                 else  {
                     Alert error = new Alert(Alert.AlertType.ERROR);

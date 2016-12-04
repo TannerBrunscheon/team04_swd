@@ -21,7 +21,7 @@
             <TextField fx:id="districtIDBox" layoutX="222.0" layoutY="98.0" />
             <TextField fx:id="repubBox" layoutX="414.0" layoutY="98.0" />
             <TextField fx:id="demBox" layoutX="414.0" layoutY="152.0" />
-            <Button fx:id="addPressed" layoutX="65.0" layoutY="152.0" mnemonicParsing="false" text="Add Canidate" />
+            <Button fx:id="addButton" layoutX="65.0" layoutY="152.0" mnemonicParsing="false" onAction="#addPressed" text="Add Canidate" />
             <Label layoutX="80.0" layoutY="77.0" text="Select Race" />
             <Label layoutX="273.0" layoutY="77.0" text="District ID" />
             <Label layoutX="459.0" layoutY="77.0" text="Republican" />
