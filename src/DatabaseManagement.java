@@ -74,14 +74,12 @@ public class DatabaseManagement {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             String statement = "UPDATE houserace SET demcandidate = '" + demCandidate + "' WHERE ssnn = '" + ss_nn +"'";
             connection.prepareStatement(statement).executeQuery();
-            connection.close();
         } catch (SQLException e) {
 
         }
         try {
             String statement = "UPDATE houserace SET repcandidate = '" + repCandidate + "' WHERE ssnn = '" + ss_nn +"'";
             connection.prepareStatement(statement).executeQuery();
-            connection.close();
         } catch (SQLException e) {
 
         }
@@ -109,7 +107,7 @@ public class DatabaseManagement {
     public static void setSenateCandidates(String state_county, String demCandidate, String repCandidate){
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            String statement = "UPDATE senaterace SET demcandidate = '" + demCandidate + "' WHERE state_county = '" + state_county +"'";
+            String statement = "UPDATE senaterace SET demcandidate = '" + demCandidate + "' WHERE strpos(state_county, '" + state_county + "') > 0";
             connection.prepareStatement(statement).executeQuery();
 
         } catch (SQLException e) {
@@ -117,7 +115,7 @@ public class DatabaseManagement {
         }
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            String statement = "UPDATE senaterace SET repcandidate = '" + repCandidate + "' WHERE state_county = '" + state_county+"'";
+            String statement = "UPDATE senaterace SET repcandidate = '" + repCandidate + "' WHERE strpos(state_county, '" + state_county + "') > 0" ;
             connection.prepareStatement(statement).executeQuery();
 
         } catch (SQLException e) {
