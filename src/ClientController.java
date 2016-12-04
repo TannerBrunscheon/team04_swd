@@ -1,5 +1,3 @@
-import com.sun.javaws.jnl.InformationDesc;
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.Loader;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -7,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
@@ -61,10 +60,13 @@ public class ClientController {
             Parent root;
 
             stage = new Stage();
-            FXMLLoader loader = FXMLLoader.load(getClass().getResource("SelectCandidateFX.fxml"));
-            root = loader.load();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("SelectCandidateFX.fxml"));
 
-            SelectCandidateController controller = loader.getController();
+
+            root = loader.load();
+            SelectCandidateController controller = (SelectCandidateController) loader.getController();
+
             controller.setId(state);
             controller.setSsnn(state+information[0]);
             controller.setState_county(state+information[1]);
