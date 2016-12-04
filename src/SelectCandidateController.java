@@ -36,19 +36,17 @@ public class SelectCandidateController {
 
     @FXML
     private void initialize() {
-        String demPres = null;// = getDemPresCandidate();
-        String repPres = null;// = getRepPresCandidate();
-        String demSen = null;// = getDemSenCandidate();
-        String repSen = null;// = getRepSenCandidate();
-        String demHouse = null;// = getDemHouseCandidate();
-        String repHouse = null;// = getRepHouseCandidate();
+        String demPres = DatabaseManagement.getDemocraticPresidentialCandidate();
+        String repPres = DatabaseManagement.getRepublicanPresidentialCandidate();
+        String[] senators = null;//DatabaseManagement.getSenateCandidates(ss-nn);
+        String[] house = null;// DatabaseManagement.getHouseCandidates(state_county);
 
         demPresBox.setText(demPres);
-        demSCBox.setText(demSen);
-        demHRBox.setText(demHouse);
+        demSCBox.setText(null);
+        demHRBox.setText(null);
         repPresBox.setText(repPres);
-        repSCBox.setText(repSen);
-        repHRBox.setText(repHouse);
+        repSCBox.setText(null);
+        repHRBox.setText(null);
     }
 
     @FXML
