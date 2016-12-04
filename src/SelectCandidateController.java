@@ -45,11 +45,11 @@ public class SelectCandidateController {
         String[] house = DatabaseManagement.getHouseCandidates(state_county);
 
         demPresBox.setText(demPres);
-        demSCBox.setText(null);
-        demHRBox.setText(null);
+        demSCBox.setText(senators[0]);
+        demHRBox.setText(house[0]);
         repPresBox.setText(repPres);
-        repSCBox.setText(null);
-        repHRBox.setText(null);
+        repSCBox.setText(senators[1]);
+        repHRBox.setText(house[1]);
     }
 
     @FXML
