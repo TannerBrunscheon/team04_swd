@@ -31,9 +31,7 @@
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
          <children>
-            <Button fx:id="pushPres" layoutX="63.0" layoutY="83.0" mnemonicParsing="false" onAction="#presPressed" text="Push President" />
-            <Button fx:id="pushSen" layoutX="254.0" layoutY="83.0" mnemonicParsing="false" onAction="#senPressed" text="Push Senate" />
-            <Button fx:id="pushHouse" layoutX="455.0" layoutY="83.0" mnemonicParsing="false" onAction="#housePressed" text="Push House" />
+            <Button fx:id="pushFus" layoutX="155.0" layoutY="83.0" mnemonicParsing="false" onAction="#fusPressed" prefHeight="29.0" prefWidth="288.0" text="Push to Fusion Table" />
          </children></AnchorPane>
   </items>
 </SplitPane>
