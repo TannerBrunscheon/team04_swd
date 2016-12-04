@@ -3,9 +3,13 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+
+import java.awt.*;
+import java.net.URL;
 
 /**
  * Created by tbrunscheon on 12/3/16.
@@ -20,7 +24,7 @@ public class AuditorController {
     @FXML
     private TextField demBox;
     @FXML
-    private TextField stateBox;
+    private ChoiceBox stateBox;
     @FXML
     private Button addButton;
     @FXML
@@ -28,6 +32,10 @@ public class AuditorController {
 
     @FXML
     private void initialize() {
+        stateBox.setItems(FXCollections.observableArrayList("AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL",
+                "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO",
+                "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC",
+                "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"));
         raceDropDown.setItems(FXCollections.observableArrayList("President","Senate","House"));
         raceDropDown.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
             @Override
@@ -64,21 +72,46 @@ public class AuditorController {
             if (repubBox.getText()!=null&&demBox.getText()!=null){
                 DatabaseManagement.setDemocraticPresidentialCandidate(demBox.getText());
                 DatabaseManagement.setRepublicanPresidentialCandidate(repubBox.getText());
+
+            }
+            else  {
+                Alert error = new Alert(Alert.AlertType.ERROR);
+
+                error.setTitle("Error!");
+                error.setHeaderText("Fill all canidates");
+
+                error.showAndWait();
             }
             break;
 
             case "Senate":
+                if (repubBox.getText()!=null&&demBox.getText()!=null&&
+                        stateBox.getValue() != null){
+                    DatabaseManagement.setSenateCandidates(stateBox.getValue().toString(),demBox.getText(),repubBox.getText());
+                }
+                else  {
+                    Alert error = new Alert(Alert.AlertType.ERROR);
 
-                if (repubBox.getText()!=null&&demBox.getText()!=null){
-                    DatabaseManagement.setDemocraticPresidentialCandidate(demBox.getText());
-                    DatabaseManagement.setRepublicanPresidentialCandidate(repubBox.getText());
+                    error.setTitle("Error!");
+                    error.setHeaderText("Fill all canidates");
+
+                    error.showAndWait();
                 }
                 break;
 
             case "House":
-                districtIDBox.setDisable(false);
-                stateBox.setDisable(false);
-                break;
+                if (repubBox.getText()!=null&&demBox.getText()!=null&&
+                        stateBox.getValue() != null&&districtIDBox.getText()!=null){
+                    DatabaseManagement.setHouseCandidates(stateBox.getValue().toString()+"-"+districtIDBox.getText(),demBox.getText(),repubBox.getText());
+                }
+                else  {
+                    Alert error = new Alert(Alert.AlertType.ERROR);
+
+                    error.setTitle("Error!");
+                    error.setHeaderText("Fill all canidates");
+
+                    error.showAndWait();
+                }
         }
 
 
@@ -87,5 +120,11 @@ public class AuditorController {
     @FXML
     private void fusPressed(ActionEvent event) throws Exception{
         DatabaseManagement.toFusionTable();
+        try {
+            Desktop.getDesktop().browse(new URL("http://user.engineering.uiowa.edu/~tbrunscheon/WebsiteFusion.html").toURI());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }
