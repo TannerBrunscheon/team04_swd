@@ -71,14 +71,25 @@ public class DatabaseManagement {
 
     public static void presidentialRaceVote(String state_county, String vote){
         try {
-            ResultSet resultSet = null;
+
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            String statement = "SELECT * FROM presidentrace WHERE id = " + state_county;
-            selectAllValue = connection.prepareStatement(statement);
-            resultSet = selectAllValue.executeQuery();
-            resultSet.updateInt(vote, resultSet.getInt(vote) + 1);
+            String statement = "UPDATE presidentrace SET '" + vote + " = " + vote + "' + 1 WHERE id = '" + state_county +"'";
+            connection.prepareStatement(statement).executeQuery();
+
         } catch (SQLException e) {
-            e.printStackTrace();
+
+        }
+
+    }
+
+    public static void houseRaceVote(String ss_nn, String vote){
+        try {
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            String statement = "UPDATE presidentrace SET democrat = democrat + 1 WHERE id = '" + ss_nn +"'";
+            connection.prepareStatement(statement).executeQuery();
+
+        } catch (SQLException e) {
+
         }
 
     }
@@ -170,7 +181,7 @@ public class DatabaseManagement {
      */
     private static Credential access() throws Exception {
         GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(
-                JSON_FACTORY, new InputStreamReader(toFusionTableTest.class.getResourceAsStream("/client_id.json")));
+                JSON_FACTORY, new InputStreamReader(DatabaseManagement.class.getResourceAsStream("/client_id.json")));
 
         GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
                 httpTransport, JSON_FACTORY, clientSecrets, Collections.singleton(FusiontablesScopes.FUSIONTABLES)).setDataStoreFactory(dataStoreFactory).build();
