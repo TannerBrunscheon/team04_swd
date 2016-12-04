@@ -60,17 +60,7 @@ public class SelectCandidateController {
         Alert confirmationBox = new Alert(Alert.AlertType.CONFIRMATION);
 
         if (demPresBox.isSelected() && repPresBox.isSelected()){
-            voteTwice.setTitle("Error!");
-            voteTwice.setHeaderText("Can't vote for two candidates in one race!");
-            voteTwice.setContentText("Please select only one president");
-
-            voteTwice.showAndWait();
-        }
-
-        else if (demSCBox.isSelected() && repSCBox.isSelected()){
-            voteTwice.setTitle("Error!");
-            voteTwice.setHeaderText("Can't vote for two candidates in one race!");
-            voteTwice.setContentText("Please select only one Senate member");
+             voteTwice.setContentText("Please select only one Senate member");
 
             voteTwice.showAndWait();
         }
