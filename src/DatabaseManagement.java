@@ -248,6 +248,8 @@ public class DatabaseManagement {
                 connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 
                 ResultSet resultSet = null;
+
+                // This block sends president race data to the fusion table
                 selectAllValue = connection.prepareStatement("SELECT * FROM presidentrace");
                 resultSet = selectAllValue.executeQuery();
                 int i = 1;
@@ -265,6 +267,7 @@ public class DatabaseManagement {
 
                 }
 
+                // This block sends senate race data to the fusion table
                 selectAllValue = connection.prepareStatement("SELECT * FROM senaterace");
                 resultSet = selectAllValue.executeQuery();
                 i = 1;
@@ -283,6 +286,7 @@ public class DatabaseManagement {
                     }
                 }
 
+                // This block sends house race data to the fusion table
                 selectAllValue = connection.prepareStatement("SELECT * FROM houserace");
                 resultSet = selectAllValue.executeQuery();
                 i = 1;
