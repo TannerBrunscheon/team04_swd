@@ -17,7 +17,7 @@ public class AuditorGUI extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root =
-                FXMLLoader.load(getClass().getResource("Auditor.fxml"));
+                FXMLLoader.load(getClass().getResource("AuditorFX.fxml"));
         Scene scene = new Scene(root); // attach scene graph to scene
         primaryStage.setTitle("Auditor"); // displayed in window's title bar
         primaryStage.setScene(scene); // attach scene to stage
