@@ -27,7 +27,7 @@ public class DatabaseManagement {
     private static final String APPLICATION_NAME = "ServerForSWD";
 
     private static final String SENATE_ID = "1yjG0nIuuzsE83rqoWLkFrAvWwoQVMgLmWvhdg5ML";
-    private static final String HOUSE_ID = "1uCVZ7lJXJZC-W7_XyBZEaoSoa9cp1q7OFFkEuQyt";
+    private static final String HOUSE_ID = "1OVLmrwJtr8ftuSwPKeSSod4iyP9nHY_Bk1uKEO4R";
     private static final String STATES_ID = "13EUNnd4lN-yrhEc0QfRBMvzaK1QujUYns5m2BcKX";
 
     protected static DataStoreFactory dataStoreFactory;
@@ -228,7 +228,7 @@ public class DatabaseManagement {
                 i = 1;
                 while (resultSet.next() && i <= 14) {
                     if (resultSet.getString("ssnn").contains("IA-")) {
-                        Fusiontables.Query.Sql sql = fusiontables.query().sql("SELECT ROWID FROM " + HOUSE_ID + " WHERE ssnn = '"+ resultSet.getString("ssnn") +"'");
+                        Fusiontables.Query.Sql sql = fusiontables.query().sql("SELECT ROWID FROM " + HOUSE_ID + " WHERE SSNN = '"+ resultSet.getString("ssnn") +"'");
                         Sqlresponse sqlresponse = sql.execute();
                         List<List<Object>> list = sqlresponse.getRows();
                         String number = list.get(0).toString().replaceAll("[^0-9]", "");
@@ -263,7 +263,7 @@ public class DatabaseManagement {
      */
     private static Credential access() throws Exception {
         GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(
-                JSON_FACTORY, new InputStreamReader(toFusionTableTest.class.getResourceAsStream("/client_id.json")));
+                JSON_FACTORY, new InputStreamReader(DatabaseManagement.class.getResourceAsStream("/client_id.json")));
 
         GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
                 httpTransport, JSON_FACTORY, clientSecrets, Collections.singleton(FusiontablesScopes.FUSIONTABLES)).setDataStoreFactory(dataStoreFactory).build();
