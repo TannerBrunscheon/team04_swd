@@ -17,7 +17,7 @@ public class CivicInformation {
     public static String[] getCounty(String address) {
         String[] strings = new String[2];
         try {
-            CivicInfo civicInfo = new CivicInfo.Builder(GoogleNetHttpTransport.newTrustedTransport(), toFusionTableTest.JSON_FACTORY, null)
+            CivicInfo civicInfo = new CivicInfo.Builder(GoogleNetHttpTransport.newTrustedTransport(), DatabaseManagement.JSON_FACTORY, null)
                     .setApplicationName("ServerForSWD").setGoogleClientRequestInitializer(new CivicInfoRequestInitializer("AIzaSyA-ZVQaE0mN6lEsE5Z1hgppGa0J6oSoDA8")).build();
             RepresentativeInfoResponse response = civicInfo.representatives().representativeInfoByAddress().setAddress(address).execute();
             Map<String, GeographicDivision> map = response.getDivisions();

@@ -27,7 +27,7 @@ public class DatabaseManagement {
     private static final String APPLICATION_NAME = "ServerForSWD";
 
     private static final String SENATE_ID = "1yjG0nIuuzsE83rqoWLkFrAvWwoQVMgLmWvhdg5ML";
-    private static final String HOUSE_ID = "1OVLmrwJtr8ftuSwPKeSSod4iyP9nHY_Bk1uKEO4R";
+    private static final String HOUSE_ID = "1qs0M04UscRHfvB6HiePlonC8ElRzzAVXglWIATOr";
     private static final String STATES_ID = "13EUNnd4lN-yrhEc0QfRBMvzaK1QujUYns5m2BcKX";
 
     protected static DataStoreFactory dataStoreFactory;
