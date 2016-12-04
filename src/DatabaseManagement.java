@@ -50,10 +50,6 @@ public class DatabaseManagement {
     private static PreparedStatement selectAllValue; // Silly statement for finding values in DB
 
 
-    private static String democraticPresidentialCandidate;
-    private static String republicanPresidentialCandidate;
-
-
     public static void setPresidentialCandidate(String demCandidate, String repCandidate) {
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
@@ -88,9 +84,6 @@ public class DatabaseManagement {
         return candidates;
     }
 
-    public static void setRepublicanPresidentialCandidate(String republicanPresidentialCandidate) {
-        DatabaseManagement.republicanPresidentialCandidate = republicanPresidentialCandidate;
-    }
 
     public static void setHouseCandidates(String ss_nn, String demCandidate, String repCandidate){
         try {
