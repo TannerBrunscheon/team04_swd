@@ -88,7 +88,6 @@ public class AuditorController {
                 if (repubBox.getText()!=null&&demBox.getText()!=null&&
                         stateBox.getSelectionModel().getSelectedItem().toString() != null){
                     DatabaseManagement.setSenateCandidates(stateBox.getSelectionModel().getSelectedItem().toString(),demBox.getText(),repubBox.getText());
-                    System.out.println(stateBox.getSelectionModel().getSelectedItem().toString() + demBox.getText()+repubBox.getText());
                 }
                 else  {
                     Alert error = new Alert(Alert.AlertType.ERROR);
