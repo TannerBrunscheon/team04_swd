@@ -82,7 +82,6 @@ public class ClientController {
             error.setTitle("Error!");
             error.setHeaderText("Not all address components entered");
             error.setContentText("Press OK to re-enter your address");
-
             error.showAndWait();
         }
     }

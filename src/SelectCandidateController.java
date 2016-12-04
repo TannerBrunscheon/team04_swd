@@ -114,15 +114,14 @@ public class SelectCandidateController {
     }
 
     private void updateInfo(){
-        String demPres = DatabaseManagement.getDemocraticPresidentialCandidate();
-        String repPres = DatabaseManagement.getRepublicanPresidentialCandidate();
+        String[] pres = DatabaseManagement.getPresidentialCandidate();
         String[] senators = DatabaseManagement.getSenateCandidates(state_county);
         String[] house = DatabaseManagement.getHouseCandidates(ssnn);
 
-        demPresBox.setText(demPres);
+        demPresBox.setText(pres[0]);
         demSCBox.setText(senators[0]);
         demHRBox.setText(house[0]);
-        repPresBox.setText(repPres);
+        repPresBox.setText(pres[1]);
         repSCBox.setText(senators[1]);
         repHRBox.setText(house[1]);
     }

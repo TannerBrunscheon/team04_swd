@@ -53,16 +53,39 @@ public class DatabaseManagement {
     private static String democraticPresidentialCandidate;
     private static String republicanPresidentialCandidate;
 
-    public static String getDemocraticPresidentialCandidate() {
-        return democraticPresidentialCandidate;
+
+    public static void setPresidentialCandidate(String demCandidate, String repCandidate) {
+        try {
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            String statement = "UPDATE presidentrace SET demcandidate = '" + demCandidate + "'";
+            connection.prepareStatement(statement).executeQuery();
+        } catch (SQLException e) {
+
+        }
+        try {
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            String statement = "UPDATE presidentrace SET repCandidate = '" + repCandidate + "'";
+            connection.prepareStatement(statement).executeQuery();
+        } catch (SQLException e) {
+
+        }
     }
 
-    public static void setDemocraticPresidentialCandidate(String democraticPresidentialCandidate) {
-        DatabaseManagement.democraticPresidentialCandidate = democraticPresidentialCandidate;
-    }
+    public static String[] getPresidentialCandidate() {
+        String[] candidates = new String[2];
+        try {
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            selectAllValue = connection.prepareStatement("SELECT * FROM presidentrace");
+            ResultSet resultSet = selectAllValue.executeQuery();
+            while(resultSet.next()){
+                candidates[0] = resultSet.getString("demcandidate");
+                candidates[1] = resultSet.getString("repcandidate");
 
-    public static String getRepublicanPresidentialCandidate() {
-        return republicanPresidentialCandidate;
+            }
+        }catch (SQLException e){
+
+        }
+        return candidates;
     }
 
     public static void setRepublicanPresidentialCandidate(String republicanPresidentialCandidate) {
@@ -168,7 +191,7 @@ public class DatabaseManagement {
     public static void senateRaceVote(String state_county, String vote){
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            String statement = "UPDATE senaterace SET " + vote + " = " + vote + " + 1 WHERE ssnn = '" + state_county +"'";
+            String statement = "UPDATE senaterace SET " + vote + " = " + vote + " + 1 WHERE state_county = '" + state_county +"'";
             connection.prepareStatement(statement).executeQuery();
 
         } catch (SQLException e) {

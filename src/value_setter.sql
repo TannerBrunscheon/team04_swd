@@ -17,3 +17,12 @@ UPDATE houserace SET republican = 0;
 
 UPDATE senaterace SET democrat = 0;
 UPDATE senaterace SET republican = 0;
+
+UPDATE presidentrace SET demCandidate = NULL;
+UPDATE presidentrace SET repCandidate = NULL;
+
+UPDATE houserace SET demCandidate = NULL;
+UPDATE houserace SET repCandidate = NULL;
+
+UPDATE senaterace SET demCandidate = NULL;
+UPDATE senaterace SET repCandidate = NULL;

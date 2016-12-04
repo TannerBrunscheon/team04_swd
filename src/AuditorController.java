@@ -7,6 +7,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.awt.*;
 import java.net.URL;
@@ -32,6 +33,7 @@ public class AuditorController {
 
     @FXML
     private void initialize() {
+
         stateBox.setItems(FXCollections.observableArrayList("AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL",
                 "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO",
                 "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC",
@@ -70,8 +72,7 @@ public class AuditorController {
         switch (raceDropDown.getValue().toString()){
             case "President":
             if (repubBox.getText()!=null&&demBox.getText()!=null){
-                DatabaseManagement.setDemocraticPresidentialCandidate(demBox.getText());
-                DatabaseManagement.setRepublicanPresidentialCandidate(repubBox.getText());
+                DatabaseManagement.setPresidentialCandidate(demBox.getText(),repubBox.getText());
 
             }
             else  {
@@ -118,12 +119,13 @@ public class AuditorController {
 
     @FXML
     private void fusPressed(ActionEvent event) throws Exception{
+        Stage thisStage = (Stage) pushFus.getScene().getWindow();
         DatabaseManagement.toFusionTable();
         try {
             Desktop.getDesktop().browse(new URL("http://user.engineering.uiowa.edu/~tbrunscheon/WebsiteFusion.html").toURI());
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        thisStage.close();
     }
 }
