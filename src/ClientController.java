@@ -36,10 +36,6 @@ public class ClientController {
 
     @FXML
     private void submitPressed(ActionEvent event) throws Exception{
-        String address = streetTextField.getText() + ", " + cityTextField.getText() + ", " + stateSelect.getValue();
-        System.out.println(address);
-
-        System.out.println(stateSelect.getValue());
 
         Stage thisStage = (Stage) submitButton.getScene().getWindow();
 
@@ -51,8 +47,6 @@ public class ClientController {
             String state = stateSelect.getValue().toString();
 
             String[] information = CivicInformation.getCounty(street+city+state);
-
-
 
             thisStage.close();
 
