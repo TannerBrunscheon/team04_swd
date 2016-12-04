@@ -73,7 +73,7 @@ public class DatabaseManagement {
         try {
 
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            String statement = "UPDATE presidentrace SET '" + vote + " = " + vote + "' + 1 WHERE id = '" + state_county +"'";
+            String statement = "UPDATE presidentrace SET " + vote + " = " + vote + " + 1 WHERE id = '" + state_county +"'";
             connection.prepareStatement(statement).executeQuery();
 
         } catch (SQLException e) {
@@ -85,13 +85,24 @@ public class DatabaseManagement {
     public static void houseRaceVote(String ss_nn, String vote){
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            String statement = "UPDATE presidentrace SET democrat = democrat + 1 WHERE id = '" + ss_nn +"'";
+            String statement = "UPDATE houserace SET " + vote + " = " + vote + " + 1 WHERE ss-nn = '" + ss_nn +"'";
             connection.prepareStatement(statement).executeQuery();
 
         } catch (SQLException e) {
 
         }
 
+    }
+
+    public static void senateRaceVote(String state_county, String vote){
+        try {
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            String statement = "UPDATE senaterace SET " + vote + " = " + vote + " + 1 WHERE ss-nn = '" + state_county +"'";
+            connection.prepareStatement(statement).executeQuery();
+
+        } catch (SQLException e) {
+
+        }
     }
 
     public static void toFusionTable() {
