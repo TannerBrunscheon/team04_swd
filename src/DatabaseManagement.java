@@ -24,20 +24,22 @@ import java.util.List;
  * It also contains methods to send the data to the google fusion table.
  */
 public class DatabaseManagement {
+    //Name for google
     private static final String APPLICATION_NAME = "ServerForSWD";
-
+    //Id of fusion tables
     private static final String SENATE_ID = "1yjG0nIuuzsE83rqoWLkFrAvWwoQVMgLmWvhdg5ML";
     private static final String HOUSE_ID = "1qs0M04UscRHfvB6HiePlonC8ElRzzAVXglWIATOr";
     private static final String STATES_ID = "13EUNnd4lN-yrhEc0QfRBMvzaK1QujUYns5m2BcKX";
 
+    //Read write for data storage
     protected static DataStoreFactory dataStoreFactory;
-
+    //Write credentials storage file
     private static final java.io.File CREDSTORE = new java.io.File("Credentials/");
-
+    // Trusted transport of data with google
     protected static HttpTransport httpTransport;
-
+    // Read write for JSON files
     protected static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
-
+    //Fusopm table instances
     private static Fusiontables fusiontables;
 
     // stuff for database:
@@ -49,7 +51,11 @@ public class DatabaseManagement {
     private static Connection connection; // manages DB connection
     private static PreparedStatement selectAllValue; // Silly statement for finding values in DB
 
-
+    /**
+     * This is the setter method for the presidential candidates
+     * @param demCandidate the democratic presidential candidate
+     * @param repCandidate the republican presidential candidate
+     */
     public static void setPresidentialCandidate(String demCandidate, String repCandidate) {
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
@@ -67,6 +73,10 @@ public class DatabaseManagement {
         }
     }
 
+    /**
+     * This is the getter method for the presidential candidates
+     * @return Returns an array of strings containing the names of the presidential candidates.
+     */
     public static String[] getPresidentialCandidate() {
         String[] candidates = new String[2];
         try {
@@ -84,7 +94,12 @@ public class DatabaseManagement {
         return candidates;
     }
 
-
+    /**
+     * This method uses the SQL database to set the house candidates within a specific house district
+     * @param ss_nn The house district where the candidates are to be named
+     * @param demCandidate The democratic candidate
+     * @param repCandidate The republican candidate
+     */
     public static void setHouseCandidates(String ss_nn, String demCandidate, String repCandidate){
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
@@ -100,6 +115,12 @@ public class DatabaseManagement {
 
         }
     }
+
+    /**
+     * This method accesses the SQL database to retrieve the house dem and rep candidates within the specific district
+     * @param ss_nn The district where the user wants to know the candidates
+     * @return An array of strings. Index 0 contains the dem candidate, index 1 contains the rep candidate
+     */
     public static String[] getHouseCandidates(String ss_nn){
         String[] candidates = new String[2];
         try {
@@ -120,6 +141,12 @@ public class DatabaseManagement {
         return candidates;
     }
 
+    /**
+     * This method uses the SQL database to set the senate candidates within a specific state and county
+     * @param state_county The county where the candidates are to be named
+     * @param demCandidate The democratic candidate
+     * @param repCandidate The republican candidate
+     */
     public static void setSenateCandidates(String state_county, String demCandidate, String repCandidate){
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
@@ -138,6 +165,12 @@ public class DatabaseManagement {
 
         }
     }
+
+    /**
+     * This method accesses the SQL database to retrieve the house dem and rep candidates within the specific state
+     * @param state_county The state where the user wants to know the candidates
+     * @return An array of strings. Index 0 contains the dem candidate, index 1 contains the rep candidate
+     */
     public static String[] getSenateCandidates(String state_county){
         String[] candidates = new String[2];
         try {
@@ -157,6 +190,12 @@ public class DatabaseManagement {
         return candidates;
     }
 
+    /**
+     * This method is used to vote for a candidate at the presidential level. It increments a value in the sql database
+     * by 1
+     * @param state_county The state where the user is voting
+     * @param vote The vote the user is selecting either dem or rep
+     */
     public static void presidentialRaceVote(String state_county, String vote){
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
@@ -169,6 +208,11 @@ public class DatabaseManagement {
 
     }
 
+    /**
+     * This casts a single vote in a house race, incrementing a specific sql value by 1
+     * @param ss_nn The house district where the user is voting
+     * @param vote The vote, either democrat or republican
+     */
     public static void houseRaceVote(String ss_nn, String vote){
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
@@ -181,6 +225,11 @@ public class DatabaseManagement {
 
     }
 
+    /**
+     * This casts a single vote in the senate race.
+     * @param state_county This is the state and county where the person is voting from
+     * @param vote This is the choice that the user is selecting, either democrat or republican
+     */
     public static void senateRaceVote(String state_county, String vote){
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
@@ -192,6 +241,10 @@ public class DatabaseManagement {
         }
     }
 
+    /**
+     * This method is used by the autditor to send some of the data to the Google Fusion table where it can be
+     * displayed as a map containing red and blue within specific regions depending on the votes recieved
+     */
     public static void toFusionTable() {
             try {
                 httpTransport = GoogleNetHttpTransport.newTrustedTransport();
@@ -273,9 +326,11 @@ public class DatabaseManagement {
 
 
     /**
-     * This method............................................
-     * @return
-     * @throws Exception
+     * This method sets up Google Secrets which is how google authorizes access to the user data through an API. It creates
+     * a "Secrets: using the json they provide as credentials then authorizes a flow of data using a httptransport and the
+     * secrets it just created.
+     * @return Credentials for accessing the fusion table
+     * @throws Exception Any exception
      */
     private static Credential access() throws Exception {
         GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(

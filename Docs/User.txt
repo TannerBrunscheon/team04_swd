@@ -5,6 +5,10 @@ Their options will be either a senate, house, or presidential race. Once they se
 they will enter in the information of the state and district that they would like to
 modify the candidates of. Once this is done, they can type in the Republican and Democrat textfields
 entering the candidates that are running in the district/county they selected.
+If the election is over and the votes have been cast, the auditor can hit the button that generates
+a fusion table. When they go to the fusion table online they should see a set of color coordinated
+maps of the united states that displays blue if a state/district/county went democrat and red
+if it went republican.
 
 
 Usage for voters:
