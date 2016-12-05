@@ -120,12 +120,13 @@ public class AuditorController {
     @FXML
     private void fusPressed(ActionEvent event) throws Exception{
         Stage thisStage = (Stage) pushFus.getScene().getWindow();
-        DatabaseManagement.toFusionTable();
+        URL url = new URL("http://user.engineering.uiowa.edu/~tbrunscheon/WebsiteFusion.html");
         try {
-            Desktop.getDesktop().browse(new URL("http://user.engineering.uiowa.edu/~tbrunscheon/WebsiteFusion.html").toURI());
+            java.awt.Desktop.getDesktop().browse(url.toURI());
         } catch (Exception e) {
             e.printStackTrace();
         }
+        DatabaseManagement.toFusionTable();
         thisStage.close();
     }
 }
