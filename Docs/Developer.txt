@@ -36,7 +36,8 @@ the state and district options are disabled, as that auditor would not need to s
 disabled for the senate, and both are available for the house race. When the "add" button is clicked, it will verify
 that all of the necessary fields have information entered. If anything is missing, a message will pop up, alerting the
 auditor. If everything is in order, the information submitted will be submitted to the database. If the "push to fusion
-tables" button is selected, it will grab the database, then push to the Fusion Tables.
+tables" button is selected, it will grab the database, then push to the Fusion Tables. It does, however, take Google a
+while to update the tables from the database.
 
     The ClientGUI class is fairly simple, as it just grabs the ClientFX file, then sets a scene for it to appear
 on. It also labels it as "Voter Information."
