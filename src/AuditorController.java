@@ -71,18 +71,18 @@ public class AuditorController {
     private void addPressed(ActionEvent event) throws Exception{
         switch (raceDropDown.getValue().toString()){
             case "President":   //Send president info to the database
-            if (repubBox.getText()!=null&&demBox.getText()!=null){
+                if (repubBox.getText()!=null&&demBox.getText()!=null){
                 DatabaseManagement.setPresidentialCandidate(demBox.getText(),repubBox.getText());
 
-            }
-            else  {
-                Alert error = new Alert(Alert.AlertType.ERROR);
+                }
+                else  {
+                    Alert error = new Alert(Alert.AlertType.ERROR);
 
-                error.setTitle("Error!");
-                error.setHeaderText("Fill all canidates");
+                    error.setTitle("Error!");
+                    error.setHeaderText("Fill all canidates");
 
-                error.showAndWait();
-            }
+                    error.showAndWait();
+                }
             break;
 
             case "Senate":  //Send senate info to the database
@@ -112,6 +112,14 @@ public class AuditorController {
 
                     error.showAndWait();
                 }
+                break;
+            default:
+                Alert error = new Alert(Alert.AlertType.ERROR);
+
+                error.setTitle("Error!");
+                error.setHeaderText("Please choose a rate");
+                error.setContentText("Press OK");
+                error.showAndWait();
         }
 
 
@@ -121,11 +129,6 @@ public class AuditorController {
     private void fusPressed(ActionEvent event) throws Exception{
         Stage thisStage = (Stage) pushFus.getScene().getWindow();
         URL url = new URL("http://user.engineering.uiowa.edu/~tbrunscheon/WebsiteFusion.html");
-        try {
-            java.awt.Desktop.getDesktop().browse(url.toURI());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         DatabaseManagement.toFusionTable();
         thisStage.close();
     }

@@ -19,7 +19,9 @@ public class CivicInformation {
         try {
             CivicInfo civicInfo = new CivicInfo.Builder(GoogleNetHttpTransport.newTrustedTransport(), DatabaseManagement.JSON_FACTORY, null)
                     .setApplicationName("ServerForSWD").setGoogleClientRequestInitializer(new CivicInfoRequestInitializer("AIzaSyA-ZVQaE0mN6lEsE5Z1hgppGa0J6oSoDA8")).build();
+            //Initiallize the civic info grabber
             RepresentativeInfoResponse response = civicInfo.representatives().representativeInfoByAddress().setAddress(address).execute();
+            //
             Map<String, GeographicDivision> map = response.getDivisions();
             Object[] key = map.keySet().toArray();
 
