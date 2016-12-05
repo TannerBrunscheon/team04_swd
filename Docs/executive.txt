@@ -11,3 +11,5 @@ Program will:
     the country with each of the states shaded to show which party they are leaning
     for president and senate. It will break everything down into counties for the
     house race.
+5. Using Google Civics API, the program will take the voter's entered address, and
+    find their county in which their vote counts.
