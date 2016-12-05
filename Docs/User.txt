@@ -1,0 +1,16 @@
+Usage for Auditors:
+The auditor GUI is used to modify the candidates running in specific districts/counties in specific
+elections. When an auditor accesses the auditor GUI, they will be able to first select a race.
+Their options will be either a senate, house, or presidential race. Once they select the race,
+they will enter in the information of the state and district that they would like to
+modify the candidates of. Once this is done, they can type in the Republican and Democrat textfields
+entering the candidates that are running in the district/county they selected.
+
+
+Usage for voters:
+The voter GUI is to be used by registered voters who are wanting to place a vote in a house, senate
+or presidential election. The user must first enter their address, so that the correct voting district
+or county can be registered. When they hit submit, a new window will appear, this is the user's voting
+ballot. The user can then check the boxes of the candidates that wish for each position and hit submit
+upon finishing. The user's vote will then be safely (not really) transmitted to a database where
+their votes will be added.

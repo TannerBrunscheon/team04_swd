@@ -69,28 +69,28 @@ public class AuditorController {
     }
     @FXML   //If the "add" button is pressed
     private void addPressed(ActionEvent event) throws Exception{
-        switch (raceDropDown.getValue().toString()){
+        try
+        {
+        switch (raceDropDown.getValue().toString()) {
             case "President":   //Send president info to the database
-            if (repubBox.getText()!=null&&demBox.getText()!=null){
-                DatabaseManagement.setPresidentialCandidate(demBox.getText(),repubBox.getText());
+                if (repubBox.getText() != null && demBox.getText() != null) {
+                    DatabaseManagement.setPresidentialCandidate(demBox.getText(), repubBox.getText());
 
-            }
-            else  {
-                Alert error = new Alert(Alert.AlertType.ERROR);
+                } else {
+                    Alert error = new Alert(Alert.AlertType.ERROR);
 
-                error.setTitle("Error!");
-                error.setHeaderText("Fill all canidates");
+                    error.setTitle("Error!");
+                    error.setHeaderText("Fill all canidates");
 
-                error.showAndWait();
-            }
-            break;
+                    error.showAndWait();
+                }
+                break;
 
             case "Senate":  //Send senate info to the database
-                if (repubBox.getText()!=null&&demBox.getText()!=null&&
-                        stateBox.getSelectionModel().getSelectedItem().toString() != null){
-                    DatabaseManagement.setSenateCandidates(stateBox.getSelectionModel().getSelectedItem().toString(),demBox.getText(),repubBox.getText());
-                }
-                else  {
+                if (repubBox.getText() != null && demBox.getText() != null &&
+                        stateBox.getSelectionModel().getSelectedItem().toString() != null) {
+                    DatabaseManagement.setSenateCandidates(stateBox.getSelectionModel().getSelectedItem().toString(), demBox.getText(), repubBox.getText());
+                } else {
                     Alert error = new Alert(Alert.AlertType.ERROR);
 
                     error.setTitle("Error!");
@@ -100,11 +100,10 @@ public class AuditorController {
                 break;
 
             case "House":   //Send house info to the database
-                if (repubBox.getText()!=null&&demBox.getText()!=null&&
-                        stateBox.getSelectionModel().getSelectedItem().toString() != null&&districtIDBox.getText()!=null){
-                    DatabaseManagement.setHouseCandidates(stateBox.getSelectionModel().getSelectedItem().toString()+"-"+districtIDBox.getText(),demBox.getText(),repubBox.getText());
-                }
-                else  {
+                if (repubBox.getText() != null && demBox.getText() != null &&
+                        stateBox.getSelectionModel().getSelectedItem().toString() != null && districtIDBox.getText() != null) {
+                    DatabaseManagement.setHouseCandidates(stateBox.getSelectionModel().getSelectedItem().toString() + "-" + districtIDBox.getText(), demBox.getText(), repubBox.getText());
+                } else {
                     Alert error = new Alert(Alert.AlertType.ERROR);
 
                     error.setTitle("Error!");
@@ -112,20 +111,26 @@ public class AuditorController {
 
                     error.showAndWait();
                 }
+                break;
         }
 
 
+        } catch (NullPointerException e){
+            Alert error = new Alert(Alert.AlertType.ERROR);
+
+            error.setTitle("Error!");
+            error.setHeaderText("Pick a race");
+
+            error.showAndWait();
+        }
     }
+
+
 
     @FXML   //When the fusion button is pressed, it sends the database to the Fusion Tables
     private void fusPressed(ActionEvent event) throws Exception{
         Stage thisStage = (Stage) pushFus.getScene().getWindow();
         URL url = new URL("http://user.engineering.uiowa.edu/~tbrunscheon/WebsiteFusion.html");
-        try {
-            java.awt.Desktop.getDesktop().browse(url.toURI());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         DatabaseManagement.toFusionTable();
         thisStage.close();
     }
