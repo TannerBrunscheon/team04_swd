@@ -9,7 +9,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
- * Created by tmiksch on 12/3/16.
+ * Client controller for the voter
  */
 public class ClientController {
 
@@ -27,8 +27,10 @@ public class ClientController {
     private Button submitButton;
 
 
-
-    @FXML   //Set the options for states
+    /**
+     * Sets the options for the states
+     */
+    @FXML
     private void initialize() {
         stateSelect.setItems(FXCollections.observableArrayList("AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL",
                 "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO",
@@ -36,7 +38,12 @@ public class ClientController {
                 "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"));
     }
 
-    @FXML   //Actions performed when submit is hit
+    /**
+     * Actions performed when submit is hit
+     * @param event     When submit is clicked
+     * @throws Exception    Makes sure the stage is set
+     */
+    @FXML
     private void submitPressed(ActionEvent event) throws Exception{
 
         Stage thisStage = (Stage) submitButton.getScene().getWindow();  //Declare this stage so it can be closed later

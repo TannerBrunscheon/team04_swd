@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import java.util.Optional;
 
 /**
- * Created by tmiksch on 12/3/16.
+ * Select candidate for the voter
  */
 public class SelectCandidateController {
     private String id;
@@ -43,7 +43,12 @@ public class SelectCandidateController {
         updateInfo();
     }
 
-    @FXML   //Actions for if vote is pressed
+    /**
+     * Actions for if vote is pressed
+     * @param event     When the vote button is pressed
+     * @throws Exception    Makes sure the stage is set
+     */
+    @FXML
     private void votePressed(ActionEvent event) throws Exception{
         Stage voteStage = (Stage) voteButton.getScene().getWindow();
 
@@ -109,21 +114,36 @@ public class SelectCandidateController {
         }
     }
 
+    /**
+     * Set state
+     * @param id    state
+     */
     public void setId(String id) {
         this.id = id;
         updateInfo();
     }
 
+    /**
+     * Set state-number
+     * @param ssnn  state-number
+     */
     public void setSsnn(String ssnn) {
         this.ssnn = ssnn;
         updateInfo();
     }
 
+    /**
+     * Set state-county
+     * @param state_county  state-county
+     */
     public void setState_county(String state_county) {
         this.state_county = state_county;
         updateInfo();
     }
 
+    /**
+     * Update the info for the candidate check boxes
+     */
     private void updateInfo(){  //Get names for candidates
         String[] pres = DatabaseManagement.getPresidentialCandidate();
         String[] senators = DatabaseManagement.getSenateCandidates(state_county);

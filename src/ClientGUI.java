@@ -9,13 +9,18 @@ import javafx.stage.Stage;
  */
 public class ClientGUI extends Application {
     /**
-     * Created by tmiksch on 12/3/16.
+     * Launch args
      */
     public static void main(String[] args) {
             launch(args);
         }
 
-        @Override   //Creates the client GUI
+    /**
+     * Creates the Client GUI
+     * @param primaryStage  primary stage from JavaFX
+     * @throws Exception    allows the FXMLLoader to run properly
+     */
+    @Override
         public void start(Stage primaryStage) throws Exception{
             Parent root =
                     FXMLLoader.load(getClass().getResource("ClientFX.fxml"));   //Loads the fxml file

@@ -13,7 +13,7 @@ import java.awt.*;
 import java.net.URL;
 
 /**
- * Created by tbrunscheon on 12/3/16.
+ * GUI for the auditor
  */
 public class AuditorController {
     @FXML   //Choice box to select the race to be audited
@@ -31,7 +31,10 @@ public class AuditorController {
     @FXML   //Push the databases to the fusion tables
     private Button pushFus;
 
-    @FXML   //Set states, disable the fields not needed to be changed
+    /**
+     * Set states, disable the fields not needed to be changed
+     */
+    @FXML
     private void initialize() {
 
         stateBox.setItems(FXCollections.observableArrayList("AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL",
@@ -67,7 +70,13 @@ public class AuditorController {
         });
 
     }
-    @FXML   //If the "add" button is pressed
+
+    /**
+     * If the "add" button is pressed
+     * @param event     Add button is pressed
+     * @throws Exception    Makes sure the stage is set
+     */
+    @FXML
     private void addPressed(ActionEvent event) throws Exception{
         try
         {
@@ -125,9 +134,12 @@ public class AuditorController {
         }
     }
 
-
-
-    @FXML   //When the fusion button is pressed, it sends the database to the Fusion Tables
+    /**
+     * When the fusion button is pressed, it sends the database to the Fusion Tables
+     * @param event     When the fusion button is pressed
+     * @throws Exception    Makes sure the stage is set
+     */
+    @FXML
     private void fusPressed(ActionEvent event) throws Exception{
         Stage thisStage = (Stage) pushFus.getScene().getWindow();
         URL url = new URL("http://user.engineering.uiowa.edu/~tbrunscheon/WebsiteFusion.html");
