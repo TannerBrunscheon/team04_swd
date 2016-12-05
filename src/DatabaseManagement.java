@@ -326,8 +326,10 @@ public class DatabaseManagement {
 
 
     /**
-     * This method............................................
-     * @return
+     * This method sets up Google Secrets which is how google authorizes access to the user data through an API. It creates
+     * a "Secrets: using the json they provide as credentials then authorizes a flow of data using a httptransport and the
+     * secrets it just created.
+     * @return Credentials for accessing the fusion table
      * @throws Exception Any exception
      */
     private static Credential access() throws Exception {
