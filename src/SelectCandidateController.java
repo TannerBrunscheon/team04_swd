@@ -16,40 +16,41 @@ public class SelectCandidateController {
     private String id;
     private String ssnn;
     private String state_county;
-    @FXML
+
+    @FXML   //Button to send in your vote
     private Button voteButton;
 
-    @FXML
+    @FXML   //Check box for your democratic president
     private CheckBox demPresBox;
 
-    @FXML
+    @FXML   //Check box for your republican president
     private CheckBox repPresBox;
 
-    @FXML
+    @FXML   //Left leaning senate candidate
     private CheckBox demSCBox;
 
-    @FXML
+    @FXML   //Right leaning senate candidate
     private CheckBox repSCBox;
 
-    @FXML
+    @FXML   //Blue house rep
     private CheckBox demHRBox;
 
-    @FXML
+    @FXML   //Red house rep
     private CheckBox repHRBox;
 
-    @FXML
+    @FXML   //Updates checkboxes
     private void initialize() {
         updateInfo();
     }
 
-    @FXML
+    @FXML   //Actions for if vote is pressed
     private void votePressed(ActionEvent event) throws Exception{
         Stage voteStage = (Stage) voteButton.getScene().getWindow();
 
         Alert voteTwice = new Alert(Alert.AlertType.ERROR);
         Alert confirmationBox = new Alert(Alert.AlertType.CONFIRMATION);
 
-        if (demPresBox.isSelected() && repPresBox.isSelected()){
+        if (demPresBox.isSelected() && repPresBox.isSelected()){    //Makes sure both candidates aren't voted for
             voteTwice.setTitle("Error!");
             voteTwice.setHeaderText("Can't vote for two candidates in one race!");
             voteTwice.setContentText("Please select only one President");
@@ -57,7 +58,7 @@ public class SelectCandidateController {
             voteTwice.showAndWait();
         }
 
-        else if (demSCBox.isSelected() && repSCBox.isSelected()){
+        else if (demSCBox.isSelected() && repSCBox.isSelected()){   //Makes sure both candidates aren't voted for
             voteTwice.setTitle("Error!");
             voteTwice.setHeaderText("Can't vote for two candidates in one race!");
             voteTwice.setContentText("Please select only one Senate Member");
@@ -65,7 +66,7 @@ public class SelectCandidateController {
             voteTwice.showAndWait();
         }
 
-        else if (demHRBox.isSelected() && repHRBox.isSelected()){
+        else if (demHRBox.isSelected() && repHRBox.isSelected()){   //Makes sure both candidates aren't voted for
             voteTwice.setTitle("Error!");
             voteTwice.setHeaderText("Can't vote for two candidates in one race!");
             voteTwice.setContentText("Please select only one House Representative");
@@ -75,11 +76,11 @@ public class SelectCandidateController {
 
         else {
 
-            confirmationBox.setTitle("");
+            confirmationBox.setTitle("");   //Confirms these are your selections
             confirmationBox.setHeaderText("Are you sure these are your candidates?");
             confirmationBox.setContentText("Press OK if you are sure");
 
-
+            //Send voting info to the database
             Optional<ButtonType> confirm = confirmationBox.showAndWait();
             if (confirm.get() == ButtonType.OK){
                 if (demPresBox.isSelected()){
@@ -123,7 +124,7 @@ public class SelectCandidateController {
         updateInfo();
     }
 
-    private void updateInfo(){
+    private void updateInfo(){  //Get names for candidates
         String[] pres = DatabaseManagement.getPresidentialCandidate();
         String[] senators = DatabaseManagement.getSenateCandidates(state_county);
         String[] house = DatabaseManagement.getHouseCandidates(ssnn);

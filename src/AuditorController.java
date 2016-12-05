@@ -16,22 +16,22 @@ import java.net.URL;
  * Created by tbrunscheon on 12/3/16.
  */
 public class AuditorController {
-    @FXML
+    @FXML   //Choice box to select the race to be audited
     private ChoiceBox raceDropDown;
-    @FXML
+    @FXML   //Enter your district if necessary
     private TextField districtIDBox;
-    @FXML
+    @FXML   //Enter your Republican candidate
     private TextField repubBox;
-    @FXML
+    @FXML   //Enter your Democratic candidate
     private TextField demBox;
-    @FXML
+    @FXML   //Choice box for your state
     private ChoiceBox stateBox;
-    @FXML
+    @FXML   //Add candidate information to database
     private Button addButton;
-    @FXML
+    @FXML   //Push the databases to the fusion tables
     private Button pushFus;
 
-    @FXML
+    @FXML   //Set states, disable the fields not needed to be changed
     private void initialize() {
 
         stateBox.setItems(FXCollections.observableArrayList("AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL",
@@ -67,10 +67,10 @@ public class AuditorController {
         });
 
     }
-    @FXML
+    @FXML   //If the "add" button is pressed
     private void addPressed(ActionEvent event) throws Exception{
         switch (raceDropDown.getValue().toString()){
-            case "President":
+            case "President":   //Send president info to the database
             if (repubBox.getText()!=null&&demBox.getText()!=null){
                 DatabaseManagement.setPresidentialCandidate(demBox.getText(),repubBox.getText());
 
@@ -85,7 +85,7 @@ public class AuditorController {
             }
             break;
 
-            case "Senate":
+            case "Senate":  //Send senate info to the database
                 if (repubBox.getText()!=null&&demBox.getText()!=null&&
                         stateBox.getSelectionModel().getSelectedItem().toString() != null){
                     DatabaseManagement.setSenateCandidates(stateBox.getSelectionModel().getSelectedItem().toString(),demBox.getText(),repubBox.getText());
@@ -99,7 +99,7 @@ public class AuditorController {
                 }
                 break;
 
-            case "House":
+            case "House":   //Send house info to the database
                 if (repubBox.getText()!=null&&demBox.getText()!=null&&
                         stateBox.getSelectionModel().getSelectedItem().toString() != null&&districtIDBox.getText()!=null){
                     DatabaseManagement.setHouseCandidates(stateBox.getSelectionModel().getSelectedItem().toString()+"-"+districtIDBox.getText(),demBox.getText(),repubBox.getText());
@@ -117,7 +117,7 @@ public class AuditorController {
 
     }
 
-    @FXML
+    @FXML   //When the fusion button is pressed, it sends the database to the Fusion Tables
     private void fusPressed(ActionEvent event) throws Exception{
         Stage thisStage = (Stage) pushFus.getScene().getWindow();
         URL url = new URL("http://user.engineering.uiowa.edu/~tbrunscheon/WebsiteFusion.html");

@@ -14,19 +14,19 @@ import javafx.stage.Stage;
 public class ClientController {
 
 
-    @FXML
+    @FXML   //Text field that holds the voter street
     private TextField streetTextField;
 
-    @FXML
+    @FXML   //Text field that holds the voter city
     private TextField cityTextField;
 
-    @FXML
+    @FXML   //Submits the voter's address
     private Button submitButton;
 
-    @FXML
+    @FXML   //Choice box to pick your state
     private ChoiceBox stateSelect;
 
-    @FXML
+    @FXML   //Set the options for states
     private void initialize() {
         stateSelect.setItems(FXCollections.observableArrayList("AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL",
                 "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO",
@@ -34,26 +34,26 @@ public class ClientController {
                 "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"));
     }
 
-    @FXML
+    @FXML   //Actions performed when submit is hit
     private void submitPressed(ActionEvent event) throws Exception{
 
-        Stage thisStage = (Stage) submitButton.getScene().getWindow();
+        Stage thisStage = (Stage) submitButton.getScene().getWindow();  //Declare this stage so it can be closed later
 
         if (!streetTextField.getText().equals("") && !cityTextField.getText().equals("") &&
-                stateSelect.getValue() != null) {
+                stateSelect.getValue() != null) {   //Makes sure all fields are filled out
 
             String street = streetTextField.getText();
             String city = cityTextField.getText();
             String state = stateSelect.getValue().toString();
 
-            String[] information = CivicInformation.getCounty(street + city + state);
+            String[] information = CivicInformation.getCounty(street + city + state);   //Send information to Civics
 
-            thisStage.close();
+            thisStage.close();  //Close the address window
 
             Stage stage;
             Parent root;
 
-            stage = new Stage();
+            stage = new Stage();    //Load the voting window
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("SelectCandidateFX.fxml"));
 
@@ -70,7 +70,7 @@ public class ClientController {
             stage.showAndWait();
         }
 
-        else {
+        else {  //Error message for not all fields being entered
             Alert error = new Alert(Alert.AlertType.ERROR);
 
             error.setTitle("Error!");
