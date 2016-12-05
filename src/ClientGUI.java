@@ -20,8 +20,8 @@ public class ClientGUI extends Application {
             Parent root =
                     FXMLLoader.load(getClass().getResource("ClientFX.fxml"));   //Loads the fxml file
             Scene scene = new Scene(root);  //Attach scene graph to scene
-            primaryStage.setTitle("Voter Address"); // displayed in window's title bar  //Gives it a title
-            primaryStage.setScene(scene); // attach scene to stage
+            primaryStage.setTitle("Voter Address"); //Gives it a title
+            primaryStage.setScene(scene);   //Attach scene to stage
             primaryStage.show();    //Display the stage
         }
     }
