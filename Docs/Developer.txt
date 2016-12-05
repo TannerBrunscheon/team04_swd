@@ -1,0 +1,12 @@
+When the Civics Api is requested to get information for the congressional district and
+the county the first thing it does is sets up a requestor with Google to get the information from the server
+based on the address given. When it receives that information, it parses it for the congressional district that
+the address is in and for the county the address is in. It returns that.
+
+When setting the candidates in general database management takes in the location(for president there is none, for senate its
+state and for house its state and district) and then looks up that appropriate spot in the database and sends back the dem candidate
+and the republican candidate.
+
+When a vote is sent in it will take in the location as well(For president it state, for senate its state and county and for house its state
+and district) then it will take that information and look for the matching information in the database and increment the value of that
+location with their vote.

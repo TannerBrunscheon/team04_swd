@@ -24,20 +24,22 @@ import java.util.List;
  * It also contains methods to send the data to the google fusion table.
  */
 public class DatabaseManagement {
+    //Name for google
     private static final String APPLICATION_NAME = "ServerForSWD";
-
+    //Id of fusion tables
     private static final String SENATE_ID = "1yjG0nIuuzsE83rqoWLkFrAvWwoQVMgLmWvhdg5ML";
     private static final String HOUSE_ID = "1qs0M04UscRHfvB6HiePlonC8ElRzzAVXglWIATOr";
     private static final String STATES_ID = "13EUNnd4lN-yrhEc0QfRBMvzaK1QujUYns5m2BcKX";
 
+    //Read write for data storage
     protected static DataStoreFactory dataStoreFactory;
-
+    //Write credentials storage file
     private static final java.io.File CREDSTORE = new java.io.File("Credentials/");
-
+    // Trusted transport of data with google
     protected static HttpTransport httpTransport;
-
+    // Read write for JSON files
     protected static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
-
+    //Fusopm table instances
     private static Fusiontables fusiontables;
 
     // stuff for database:
@@ -326,7 +328,7 @@ public class DatabaseManagement {
     /**
      * This method............................................
      * @return
-     * @throws Exception
+     * @throws Exception Any exception
      */
     private static Credential access() throws Exception {
         GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(
