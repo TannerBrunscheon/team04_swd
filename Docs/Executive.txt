@@ -1,15 +1,15 @@
 EXECUTIVE SUMMARY
-Program will:
-1. Allow voters to enter their home address, then submit their vote. Voter information
-    will be added to the database.
-2. Allow auditors to select which race they audit, then add candidates for that
-    specific race. Candidate information will be added to the database.
-3. Update the voting databases in real time, and shows how each race is progressing,
-    similar to election night coverage on a major TV network.
-4. The votes for all three races can be pushed to Google Fusion Tables, to display
-    the state of the presidential, senate, and house races. The tables display
-    the country with each of the states shaded to show which party they are leaning
-    for president and senate. It will break everything down into counties for the
-    house race.
-5. Using Google Civics API, the program will take the voter's entered address, and
-    find their county in which their vote counts.
+                                                 Program will:
+                                                 1. Allow voters to enter their home address, then submit their vote. Voter information
+                                                     will be added to the database.
+                                                 2. Allow auditors to select which race they audit, then add candidates for that
+                                                     specific race. Candidate information will be added to the database.
+                                                 3. Update the voting databases in real time, and shows how each race is progressing,
+                                                     similar to election night coverage on a major TV network.
+                                                 4. The votes for all three races can be pushed to Google Fusion Tables, to display
+                                                     the state of the presidential, senate, and house races. The tables display
+                                                     the country with each of the states shaded to show which party they are leaning
+                                                     for president and senate. It will break everything down into counties for the
+                                                     house race.
+                                                 5. Using Google Civics API, the program will take the voter's entered address, and
+                                                     find their county in which their vote counts.
