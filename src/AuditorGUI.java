@@ -9,12 +9,20 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class AuditorGUI extends Application {
-    //Launch arguments
+
+    /**
+     * Launch Args
+     */
     public static void main(String[] args) {
         launch(args);
     }
 
-    @Override   //Create auditor GUI
+    /**
+     * Create auditor GUI
+     * @param primaryStage  primary stage from JavaFX
+     * @throws Exception    allows the FXMLLoader to run properly
+     */
+    @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root =
                 FXMLLoader.load(getClass().getResource("AuditorFX.fxml"));  //Load the fxml file

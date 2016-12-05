@@ -3,10 +3,43 @@ the county the first thing it does is sets up a requestor with Google to get the
 based on the address given. When it receives that information, it parses it for the congressional district that
 the address is in and for the county the address is in. It returns that.
 
-When setting the candidates in general database management takes in the location(for president there is none, for senate its
-state and for house its state and district) and then looks up that appropriate spot in the database and sends back the dem candidate
-and the republican candidate.
+When setting the candidates in general database management takes in the location(for president there is none, for senate
+its state and for house its state and district) and then looks up that appropriate spot in the database and sends back
+the dem candidate and the republican candidate.
 
-When a vote is sent in it will take in the location as well(For president it state, for senate its state and county and for house its state
-and district) then it will take that information and look for the matching information in the database and increment the value of that
-location with their vote.
+When a vote is sent in it will take in the location as well(For president it state, for senate its state and county and
+for house its state and district) then it will take that information and look for the matching information in the
+database and increment the value of that location with their vote.
+
+    The ClientController class handles all the information in the ClientFX GUI, which is used by the voter. It features
+2 TextFields, one for the street address, and one for entering the city/town. There is also a ChoiceBox to select the
+state currently resided in. Then there is a submit button, which takes all of that information, and sends it to the
+CivicInformation class to get the county. If any of the fields are left empty, then an error message will pop, telling
+the voter that they need to enter information in all fields. When all the information is correctly entered, then the
+voter address window will close, and the SelectCandidate window opens. It opens with the information about the state,
+county, and voting district.
+
+    The SelectCandidateController class contains six CheckBoxes and one Button. The six CheckBoxes are used to select
+either the Democratic or Republican candidate for presidential, senate, and house elections. The Button is used to
+submit the vote. When it is pressed, it will first confirm that the voter is not voting for both candidates at any
+level. Once all votes are legal, another window will pop up, asking the user if they are sure about their votes. If OK
+is pressed, the checked boxes will send the votes to the database. The CheckBoxes get their labels from the database,
+which can have its candidates update via the Auditor window.
+
+    The AuditorController features three TextFields, two ChoiceBoxes, and two Buttons. The first TextField takes in the
+the district ID of the auditor, so they can enter which district the House candidates are running in. The next two are
+used to enter in the Democratic and Republican candidates. The ChoiceBoxes are drop down lists that first allows the
+auditor to select which race they're entering information into, and another that allows them to select which state they
+are in for entering Senate and House candidates. Finally, the first Button sends the candidate information to the data-
+base, while the second Button pushes everything to the Fusion Tables. When the auditor selects the presidential race,
+the state and district options are disabled, as that auditor would not need to submit that information. The district is
+disabled for the senate, and both are available for the house race. When the "add" button is clicked, it will verify
+that all of the necessary fields have information entered. If anything is missing, a message will pop up, alerting the
+auditor. If everything is in order, the information submitted will be submitted to the database. If the "push to fusion
+tables" button is selected, it will grab the database, then push to the Fusion Tables. It does, however, take Google a
+while to update the tables from the database.
+
+    The ClientGUI class is fairly simple, as it just grabs the ClientFX file, then sets a scene for it to appear
+on. It also labels it as "Voter Information."
+
+    The AuditorGUI class is almost identical, but it pulls the AuditorFX file instead and labels it as "Auditor."
