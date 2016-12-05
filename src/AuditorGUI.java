@@ -10,17 +10,18 @@ import javafx.stage.Stage;
 
 public class AuditorGUI extends Application {
 
+    //Launch arguments
     public static void main(String[] args) {
         launch(args);
     }
 
-    @Override
+    @Override   //Create auditor GUI
     public void start(Stage primaryStage) throws Exception {
         Parent root =
-                FXMLLoader.load(getClass().getResource("AuditorFX.fxml"));
-        Scene scene = new Scene(root); // attach scene graph to scene
-        primaryStage.setTitle("Auditor"); // displayed in window's title bar
-        primaryStage.setScene(scene); // attach scene to stage
-        primaryStage.show(); // display the stage
+                FXMLLoader.load(getClass().getResource("AuditorFX.fxml"));  //Load the fxml file
+        Scene scene = new Scene(root); //Attach scene graph to scene
+        primaryStage.setTitle("Auditor");   //Displayed in window's title bar
+        primaryStage.setScene(scene);   //Attach scene to stage
+        primaryStage.show();    //Display the stage
     }
 }

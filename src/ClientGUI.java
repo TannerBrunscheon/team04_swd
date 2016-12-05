@@ -11,20 +11,18 @@ public class ClientGUI extends Application {
     /**
      * Created by tmiksch on 12/3/16.
      */
-
-
-        public static void main(String[] args) {
+    public static void main(String[] args) {
             launch(args);
         }
 
-        @Override
+        @Override   //Creates the client GUI
         public void start(Stage primaryStage) throws Exception{
             Parent root =
-                    FXMLLoader.load(getClass().getResource("ClientFX.fxml"));
-            Scene scene = new Scene(root); // attach scene graph to scene
-            primaryStage.setTitle("Voter Address"); // displayed in window's title bar
+                    FXMLLoader.load(getClass().getResource("ClientFX.fxml"));   //Loads the fxml file
+            Scene scene = new Scene(root);  //Attach scene graph to scene
+            primaryStage.setTitle("Voter Address"); // displayed in window's title bar  //Gives it a title
             primaryStage.setScene(scene); // attach scene to stage
-            primaryStage.show(); // display the stage
+            primaryStage.show();    //Display the stage
         }
     }
 
