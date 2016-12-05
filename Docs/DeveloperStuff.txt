@@ -1,0 +1,5 @@
+    The ClientController class handles all the information in the ClientFX GUI, which is used by the voter. It features
+2 TextFields, one for the street address, and one for entering the city/town. There is also a ChoiceBox to select the
+state currently resided in. Then there is a submit button, which takes all of that information, and sends it to the
+CivicInformation class to get the county. If any of the fields are left empty, then an error message will pop, telling
+the voter that they need to enter information in all fields. When all the information is correctly entered, then

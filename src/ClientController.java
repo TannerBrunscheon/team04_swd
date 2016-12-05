@@ -20,11 +20,13 @@ public class ClientController {
     @FXML   //Text field that holds the voter city
     private TextField cityTextField;
 
+    @FXML   //Choice box to pick your state
+    private ChoiceBox stateSelect;
+
     @FXML   //Submits the voter's address
     private Button submitButton;
 
-    @FXML   //Choice box to pick your state
-    private ChoiceBox stateSelect;
+
 
     @FXML   //Set the options for states
     private void initialize() {
